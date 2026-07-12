@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gaseo S.A.S. — Evaluación económica: ROI, TIR, VPN, Payback, APU y proyecciones financieras del proyecto de automatización.">
+  <title>Evaluación Económica · Gaseo S.A.S.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header" id="top">
+    <nav class="nav" aria-label="Principal">
+      <a href="index.html" class="nav__brand" aria-label="Gaseo S.A.S. — Inicio">
+        <svg class="nav__logo-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="2" y="8" width="32" height="20" rx="2" stroke="currentColor" stroke-width="2"/>
+          <path d="M6 18h8M18 18h12M6 14v8M14 14v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="28" cy="12" r="3" fill="currentColor"/>
+        </svg>
+        <span class="nav__logo-text">Gaseo S.A.S.</span>
+      </a>
+      <button type="button" class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" id="nav-toggle">
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="visually-hidden">Abrir menú</span>
+      </button>
+      <ul class="nav__list" id="nav-menu">
+        <li><a href="index.html" class="nav__link">Inicio</a></li>
+        <li><a href="evaluacion.html" class="nav__link" aria-current="page">Inversión</a></li>
+        <li><a href="propuesta.html" class="nav__link">Propuesta</a></li>
+        <li class="nav__item nav__dropdown" data-nav-dropdown>
+          <button type="button" class="nav__dropdown-toggle" id="nav-modules-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="nav-modules-menu">
+            Módulos <span class="nav__dropdown-caret" aria-hidden="true">▾</span>
+          </button>
+          <ul class="nav__dropdown-menu" id="nav-modules-menu" role="menu">
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="modulos/introduccion.html">Introducción</a></li>
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="modulos/produccion.html">Producción</a></li>
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="modulos/planeacion.html">Planeación</a></li>
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="modulos/robotica.html">Robótica</a></li>
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="modulos/digital-factory.html">Digital Factory</a></li>
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="modulos/control.html">Control (PLC)</a></li>
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="modulos/scada.html">SCADA</a></li>
+            <li role="separator" class="nav__dropdown-separator" aria-hidden="true"></li>
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="asignatura.html">Asignatura</a></li>
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="reflexiones.html">Reflexiones</a></li>
+          </ul>
+        </li>
+        <li><a href="contacto.html" class="nav__link">Contáctenos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero hero--compact" id="inicio">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="hero__content hero__content--compact">
+        <p class="hero__eyebrow">Viabilidad financiera</p>
+        <h1 class="hero__title">Evaluación Económica</h1>
+        <p class="hero__subtitle">Indicadores financieros, análisis de costos y proyecciones de retorno de inversión</p>
+      </div>
+    </section>
+
+    <article class="module-content">
+      <!-- [REMOVAL-024] Modelo monolínea y sensibilidades precio/envase sustituidos por evaluación multiproducto (WACC 18%) según evaluacion-multiproducto-final.pdf -->
+      <div class="container">
+
+        <section class="module-section" id="nota-alcance">
+          <div class="module-note reveal">
+            <strong>Alcance:</strong> Esta evaluación aplica al <strong>negocio industrial multiproducto de bebidas y agua</strong>: <strong>tres líneas productivas</strong> (carbonatada retornable 400&nbsp;mL, energizante en lata 355&nbsp;mL, agua PET 1&nbsp;L), términos nominales en COP, horizonte 5 años y <strong>WACC 18%</strong> efectivo anual.
+            <br><br>
+            <a href="docs/evaluacion-multiproducto-final.pdf" target="_blank" rel="noopener" style="color:var(--primary-dark);font-weight:600">Descargar informe completo (PDF final, multiproducto) →</a>
+            <br>
+            <a href="docs/evaluacion-economica-v2.pdf" target="_blank" rel="noopener" style="color:var(--text-muted);font-weight:500;font-size:0.95rem">Referencia secundaria: modelo monolínea (evaluacion-economica-v2.pdf) →</a>
+          </div>
+        </section>
+
+        <section class="module-section module-section--alt" id="marco-analisis" aria-labelledby="sec-marco">
+          <h2 class="module-section__title" id="sec-marco">Marco del análisis económico</h2>
+          <hr class="module-section__divider">
+          <p class="module-section__lead reveal">Flujos de caja incremental, tasa de descuento (WACC) y horizonte; comparación de alternativas (manual vs robotizado, escenarios de OEE) con análisis de sensibilidad.</p>
+          <ul class="module-list reveal">
+            <li>Tabla de inversiones CAPEX/OPEX y supuestos de ahorro.</li>
+            <li>Indicadores por escenario y punto de equilibrio operativo.</li>
+            <li>Sensibilidades (WACC, OEE) y lectura de escenarios de referencia.</li>
+          </ul>
+          <div class="placeholder-card placeholder-card--styled reveal">
+            <div class="placeholder-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="16" stroke="currentColor" stroke-width="2"/><path d="M20 12v8l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <p class="placeholder-card__title">Evaluación económica completa</p>
+            <p class="placeholder-card__text">El análisis financiero detallado (APU, flujo de caja, VPN, TIR, ROI, Payback) está desarrollado en esta misma página.</p>
+            <a href="#indicadores" class="placeholder-card__link">Ver indicadores y tablas →</a>
+          </div>
+        </section>
+
+        <section class="module-section" id="indicadores">
+          <h2 class="module-section__title">Indicadores financieros consolidados</h2>
+          <hr class="module-section__divider">
+          <p class="module-section__lead">Modelo con inversión total <strong>141,252 MM COP</strong>, horizonte 5 años, <strong>WACC 18%</strong> e.a. y valor terminal (VT) incluido en VPN. <strong>EBITDA</strong> estacionario consolidado: <strong>138,973 MM</strong> (30.4%). <strong>FCL</strong> estacionario consolidado: <strong>93,064 MM</strong>.</p>
+
+          <div class="module-stats">
+            <div class="stat-card">
+              <span class="stat-card__value">+108,878 MM</span>
+              <span class="stat-card__label">VPN (18%, 5 años + VT)</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-card__value">≈38%</span>
+              <span class="stat-card__label">TIR global (anual)</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-card__value">≈48.9%</span>
+              <span class="stat-card__label">ROI global</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-card__value">≈28 meses</span>
+              <span class="stat-card__label">Payback global</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="module-section" id="lineas">
+          <h2 class="module-section__title">Tres líneas productivas</h2>
+          <hr class="module-section__divider">
+          <p class="module-section__lead">Capacidades nominales, formatos, OEE AS-IS / TO-BE, producción anual TO-BE, precios Ex-Works y CapEx de maquinaria por línea.</p>
+
+          <div class="table-wrap reveal">
+            <table class="data-table">
+              <caption class="visually-hidden">Parámetros por línea productiva</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Parámetro</th>
+                  <th scope="col">L1 — Carbonatada 400&nbsp;mL</th>
+                  <th scope="col">L2 — Energizante 355&nbsp;mL</th>
+                  <th scope="col">L3 — Agua PET 1&nbsp;L</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Capacidad</td><td>20,000 bot/h</td><td>30,000 latas/h</td><td>15,000 bot/h</td></tr>
+                <tr><td>Formato</td><td>Envase retornable</td><td>Lata de aluminio</td><td>PET soplado</td></tr>
+                <tr><td>OEE TO-BE</td><td>0.95</td><td>0.92</td><td>0.90</td></tr>
+                <tr><td>OEE AS-IS</td><td>0.80</td><td>0.78</td><td>0.75</td></tr>
+                <tr><td>Producción anual TO-BE</td><td>136.8 M u</td><td>198 M u</td><td>97.2 M u</td></tr>
+                <tr><td>Precio Ex-Works</td><td>850 COP/bot</td><td>1,350 COP/lata</td><td>750 COP/bot</td></tr>
+                <tr class="data-table__highlight"><td>CapEx maquinaria (MM COP)</td><td>18,000</td><td>35,000</td><td>25,000</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="module-section" id="inversion">
+          <h2 class="module-section__title">Estructura de inversión consolidada</h2>
+          <hr class="module-section__divider">
+          <p class="module-section__lead">Inversión total <strong>141,252 MM COP</strong>: CapEx por línea, infraestructura compartida, flota retornable L1, capital de trabajo operativo y costos preoperativos.</p>
+
+          <div class="grid-3 reveal" style="margin-bottom:1.5rem">
+            <div class="stat-card stat-card--dark">
+              <span class="stat-card__value">78,000 MM</span>
+              <span class="stat-card__label">CapEx maquinaria (L1+L2+L3)</span>
+            </div>
+            <div class="stat-card stat-card--dark">
+              <span class="stat-card__value">45,868 MM</span>
+              <span class="stat-card__label">Capital de trabajo operativo</span>
+            </div>
+            <div class="stat-card stat-card--dark">
+              <span class="stat-card__value">141,252 MM</span>
+              <span class="stat-card__label">Inversión total (I₀)</span>
+            </div>
+          </div>
+
+          <div class="table-wrap reveal">
+            <table class="data-table">
+              <caption class="visually-hidden">Desglose de inversión total</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Componente</th>
+                  <th scope="col">Valor (MM COP)</th>
+                  <th scope="col">%</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>CapEx maquinaria L1</td><td>18,000</td><td>12.7%</td></tr>
+                <tr><td>CapEx maquinaria L2</td><td>35,000</td><td>24.8%</td></tr>
+                <tr><td>CapEx maquinaria L3</td><td>25,000</td><td>17.7%</td></tr>
+                <tr><td>Infraestructura compartida</td><td>10,000</td><td>7.1%</td></tr>
+                <tr><td>Flota envases retornables L1</td><td>7,000</td><td>5.0%</td></tr>
+                <tr><td>Capital de trabajo operativo</td><td>45,868</td><td>32.5%</td></tr>
+                <tr><td>Costos preoperativos</td><td>384</td><td>0.3%</td></tr>
+                <tr class="data-table__highlight"><td><strong>TOTAL</strong></td><td><strong>141,252</strong></td><td><strong>100%</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="module-section" id="apu">
+          <h2 class="module-section__title">Análisis de precios unitarios (APU)</h2>
+          <hr class="module-section__divider">
+          <p class="module-section__lead">Costos y márgenes por unidad en año estacionario (plena operación), según el modelo multiproducto.</p>
+
+          <h3 class="module-section__subtitle reveal">L1 — Carbonatada 400&nbsp;mL</h3>
+          <div class="table-wrap reveal">
+            <table class="data-table">
+              <caption class="visually-hidden">APU L1 carbonatada</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Concepto</th>
+                  <th scope="col">COP/bot</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Costo producción APU (sin depreciación)</td><td>583.69</td></tr>
+                <tr><td>Depreciación</td><td>13.16</td></tr>
+                <tr class="data-table__highlight"><td>Costo APU total</td><td>596.85</td></tr>
+                <tr><td>SGA (15%)</td><td>127.50</td></tr>
+                <tr class="data-table__highlight"><td>Costo total</td><td>724.35</td></tr>
+                <tr><td>Precio EXW</td><td>850.00</td></tr>
+                <tr class="data-table__highlight"><td>Margen</td><td>125.65 (14.8%)</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 class="module-section__subtitle reveal">L2 — Energizante 355&nbsp;mL</h3>
+          <div class="table-wrap reveal">
+            <table class="data-table">
+              <caption class="visually-hidden">APU L2 energizante</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Concepto</th>
+                  <th scope="col">COP/lata</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="data-table__highlight"><td>Costo APU total</td><td>743.99</td></tr>
+                <tr><td>SGA (13%)</td><td>175.50</td></tr>
+                <tr class="data-table__highlight"><td>Costo total</td><td>919.49</td></tr>
+                <tr><td>Precio EXW</td><td>1,350.00</td></tr>
+                <tr class="data-table__highlight"><td>Margen</td><td>430.51 (31.9%)</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 class="module-section__subtitle reveal">L3 — Agua PET 1&nbsp;L</h3>
+          <div class="table-wrap reveal">
+            <table class="data-table">
+              <caption class="visually-hidden">APU L3 agua</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Concepto</th>
+                  <th scope="col">COP/bot</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="data-table__highlight"><td>Costo APU total</td><td>349.39</td></tr>
+                <tr><td>SGA (14%)</td><td>105.00</td></tr>
+                <tr class="data-table__highlight"><td>Costo total</td><td>454.39</td></tr>
+                <tr><td>Precio EXW</td><td>750.00</td></tr>
+                <tr class="data-table__highlight"><td>Margen</td><td>295.61 (39.4%)</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="video-embed reveal">
+            <h4>Video explicativo: Análisis de Precios Unitarios</h4>
+            <div class="video-responsive">
+              <iframe src="https://www.youtube.com/embed/f3RiWIVRrMw" title="Análisis de Precios Unitarios (APU)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </section>
+
+        <section class="module-section" id="resultados">
+          <h2 class="module-section__title">Estado de resultados consolidado</h2>
+          <hr class="module-section__divider">
+          <p class="module-section__lead">Año 4 — plena capacidad (100% de la curva de rampa). Distribución de ingresos y margen EBITDA consolidado.</p>
+
+          <div class="table-wrap reveal">
+            <table class="data-table">
+              <caption class="visually-hidden">Estado de resultados año 4</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Concepto</th>
+                  <th scope="col">MM COP</th>
+                  <th scope="col">%</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Ingresos L1</td><td>116,280</td><td>25.5%</td></tr>
+                <tr><td>Ingresos L2</td><td>267,300</td><td>58.6%</td></tr>
+                <tr><td>Ingresos L3</td><td>72,900</td><td>16.0%</td></tr>
+                <tr class="data-table__highlight"><td><strong>INGRESOS TOTALES</strong></td><td><strong>456,480</strong></td><td><strong>100%</strong></td></tr>
+                <tr><td>Costo de ventas</td><td>(255,110)</td><td>55.9%</td></tr>
+                <tr><td>Utilidad bruta</td><td>201,370</td><td>44.1%</td></tr>
+                <tr><td>SGA</td><td>(62,397)</td><td>13.7%</td></tr>
+                <tr class="data-table__highlight"><td><strong>EBITDA</strong></td><td><strong>138,973</strong></td><td><strong>30.4%</strong></td></tr>
+                <tr><td>Depreciación</td><td>(8,800)</td><td>1.9%</td></tr>
+                <tr><td>EBIT</td><td>130,173</td><td>28.5%</td></tr>
+                <tr><td>Impuesto renta (35%)</td><td>(45,561)</td><td>10.0%</td></tr>
+                <tr><td><strong>Utilidad neta</strong></td><td><strong>84,613</strong></td><td>18.5%</td></tr>
+                <tr><td>(+) Depreciación</td><td>8,800</td><td></td></tr>
+                <tr class="data-table__highlight"><td><strong>FCL consolidado</strong></td><td><strong>93,413</strong></td><td></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="module-section" id="flujo-caja">
+          <h2 class="module-section__title">Flujo de caja libre y curva de rampa</h2>
+          <hr class="module-section__divider">
+          <p class="module-section__lead">Proyección a 5 años con rampa de demanda: 50% año 1, 70% año 2, 85% año 3, 100% años 4–5. Año 0: desembolso de inversión total.</p>
+
+          <div class="table-wrap reveal">
+            <table class="data-table">
+              <caption class="visually-hidden">FCL cinco años con rampa</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Año</th>
+                  <th scope="col">Factor</th>
+                  <th scope="col">Ingresos (MM)</th>
+                  <th scope="col">EBITDA (MM)</th>
+                  <th scope="col">FCL (MM)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>0</td><td>—</td><td>—</td><td>—</td><td>−141,252</td></tr>
+                <tr><td>1</td><td>50%</td><td>228,240</td><td>63,580</td><td>44,407</td></tr>
+                <tr><td>2</td><td>70%</td><td>337,415</td><td>98,810</td><td>67,306</td></tr>
+                <tr><td>3</td><td>85%</td><td>437,519</td><td>128,340</td><td>86,501</td></tr>
+                <tr><td>4</td><td>100%</td><td>488,234</td><td>138,753</td><td>93,269</td></tr>
+                <tr class="data-table__highlight"><td>5</td><td>100%</td><td>522,410</td><td>146,048</td><td>98,011 + VT 49,368</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="module-section__lead reveal" style="margin-top:1.25rem">Indicadores por línea (año estacionario / asignación del modelo):</p>
+          <div class="table-wrap reveal">
+            <table class="data-table">
+              <caption class="visually-hidden">Indicadores por línea</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Indicador</th>
+                  <th scope="col">L1</th>
+                  <th scope="col">L2</th>
+                  <th scope="col">L3</th>
+                  <th scope="col">Consolidado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Inversión (MM)</td><td>39,056</td><td>64,414</td><td>37,782</td><td>141,252</td></tr>
+                <tr><td>EBITDA (MM)</td><td>18,990</td><td>88,744</td><td>31,239</td><td>138,973</td></tr>
+                <tr><td>Margen EBITDA</td><td>16.3%</td><td>33.2%</td><td>42.8%</td><td>30.4%</td></tr>
+                <tr><td>FCL (MM)</td><td>12,974</td><td>58,909</td><td>21,181</td><td>93,064</td></tr>
+                <tr><td>TIR</td><td>≈22%</td><td>≈55%</td><td>≈35%</td><td>≈38%</td></tr>
+                <tr><td>ROI</td><td>29.0%</td><td>76.8%</td><td>40.0%</td><td>48.9%</td></tr>
+                <tr><td>Payback</td><td>≈36 m</td><td>≈16 m</td><td>≈25 m</td><td>≈28 m</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="module-note reveal">
+            <strong>Nota:</strong> La línea 2 (energizante) concentra ~<strong>63%</strong> del FCL consolidado y actúa como motor financiero del sistema. El FCL del año 1 representa ~<strong>47.7%</strong> del FCL estacionario (44,407 / 93,064), coherente con la rampa de penetración.
+          </div>
+        </section>
+
+        <section class="module-section" id="sensibilidad-wacc">
+          <h2 class="module-section__title">Sensibilidad al WACC</h2>
+          <hr class="module-section__divider">
+          <p class="module-section__lead">VPN (MM COP) según distintas tasas de descuento. La tasa base del modelo es <strong>18%</strong>; a la TIR global (~38%) el VPN se anula.</p>
+
+          <div class="table-wrap reveal">
+            <table class="data-table">
+              <caption class="visually-hidden">Sensibilidad WACC</caption>
+              <thead>
+                <tr>
+                  <th scope="col">WACC</th>
+                  <th scope="col">VPN (MM)</th>
+                  <th scope="col">Decisión</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>10%</td><td>+211,300</td><td>Invertir</td></tr>
+                <tr><td>12%</td><td>+166,840</td><td>Invertir</td></tr>
+                <tr><td>15%</td><td>+138,210</td><td>Invertir</td></tr>
+                <tr class="data-table__highlight"><td>18% (base)</td><td>+108,878</td><td>Invertir</td></tr>
+                <tr><td>20%</td><td>+86,340</td><td>Invertir</td></tr>
+                <tr><td>38% (TIR)</td><td>0</td><td>Indiferencia</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="module-section" id="sensibilidad-oee">
+          <h2 class="module-section__title">Sensibilidad al OEE (multilínea)</h2>
+          <hr class="module-section__divider">
+          <p class="module-section__lead">Combinaciones de OEE por línea y efecto sobre el <strong>FCL consolidado</strong> (MM COP). El escenario TO-BE alinea con los OEE objetivo por línea.</p>
+
+          <div class="table-wrap reveal">
+            <table class="data-table">
+              <caption class="visually-hidden">Sensibilidad OEE tres líneas</caption>
+              <thead>
+                <tr>
+                  <th scope="col">OEE L1</th>
+                  <th scope="col">OEE L2</th>
+                  <th scope="col">OEE L3</th>
+                  <th scope="col">FCL consolidado (MM)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>0.80</td><td>0.78</td><td>0.75</td><td>73,800 (AS-IS)</td></tr>
+                <tr><td>0.85</td><td>0.83</td><td>0.82</td><td>82,100</td></tr>
+                <tr class="data-table__highlight"><td>0.95</td><td>0.92</td><td>0.90</td><td>93,064 (TO-BE)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="module-section" id="riesgos">
+          <h2 class="module-section__title">Riesgos del modelo</h2>
+          <hr class="module-section__divider">
+          <p class="module-section__lead">Matriz de riesgos del informe: probabilidad, impacto y mitigación.</p>
+
+          <div class="table-wrap reveal">
+            <table class="data-table">
+              <caption class="visually-hidden">Matriz de riesgos</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Riesgo</th>
+                  <th scope="col">Prob.</th>
+                  <th scope="col">Impacto</th>
+                  <th scope="col">Mitigación</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Reforma Ley 2277 (umbral azúcar)</td><td>Media</td><td>Crítico</td><td>Reformulación a 0 azúcar añadido</td></tr>
+                <tr><td>Penetración Año 1 &lt; 40%</td><td>Media</td><td>Alto</td><td>Pre-venta; contratos distribución</td></tr>
+                <tr><td>Alza aluminio &gt; 20% (L2)</td><td>Alta</td><td>Medio</td><td>Contratos precio fijo semestral</td></tr>
+                <tr><td>OEE &lt; 0.75 en líneas</td><td>Media</td><td>Alto</td><td>Plan TPM intensivo Año 1</td></tr>
+                <tr><td>KW operativo excede proyección</td><td>Baja</td><td>Medio</td><td>Líneas de crédito rotativo</td></tr>
+                <tr><td>Devaluación COP/USD &gt; 20%</td><td>Alta</td><td>Medio</td><td>Coberturas cambiarias (forwards)</td></tr>
+                <tr><td>Competencia marcas consolidadas</td><td>Alta</td><td>Alto</td><td>Estrategia precio/canal diferenciada</td></tr>
+                <tr><td>Incumplimiento INVIMA (BPM)</td><td>Baja</td><td>Crítico</td><td>Sistema calidad ISO 22000</td></tr>
+                <tr><td>WACC real &gt; 22%</td><td>Baja</td><td>Medio</td><td>Estructurar deuda para reducir WACC</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="module-section" id="conclusiones">
+          <h2 class="module-section__title">Conclusiones y recomendaciones</h2>
+          <hr class="module-section__divider">
+
+          <div class="reveal">
+            <ol style="padding-left:1.25rem; line-height:1.85; color:var(--secondary-light); margin-top:0">
+              <li><strong>Negocio viable:</strong> VPN <strong>+108,878 MM COP</strong>, TIR ~<strong>38%</strong> anual, payback ~<strong>28 meses</strong> (WACC 18%, 5 años + VT).</li>
+              <li><strong>Ley 2277/2022</strong> es el riesgo regulatorio más crítico — reformulación a ≤6&nbsp;g/100&nbsp;mL obligatoria.</li>
+              <li><strong>WACC 18%</strong> es parámetro crítico de valoración; un WACC del 12% <strong>sobreestimaba</strong> la robustez frente al costo de capital.</li>
+              <li>La <strong>curva de rampa</strong> condiciona el FCL en los tres primeros años; el FCL del año 1 es ~<strong>47.7%</strong> del estacionario.</li>
+              <li>La <strong>línea 2 (energizante)</strong> es el motor financiero (~63% del FCL consolidado).</li>
+              <li><strong>SMMLV 2026:</strong> impacto moderado (&lt;0.7% costo total) gracias a la alta automatización.</li>
+              <li><strong>Recomendación:</strong> avanzar a etapa de <strong>prefactibilidad</strong> con el modelo multiproducto validado.</li>
+            </ol>
+          </div>
+
+          <div class="module-note reveal" style="margin-top:1.5rem">
+            <strong>Próximos pasos:</strong> Profundizar estructura de capital y deuda para acotar el WACC real, reforzar cumplimiento Ley 2277 en formulaciones, y asegurar plan TPM y penetración comercial desde el año 1.
+          </div>
+        </section>
+
+        <section class="module-section" id="parametros">
+          <h2 class="module-section__title">Parámetros del modelo</h2>
+          <hr class="module-section__divider">
+
+          <div class="table-wrap reveal">
+            <table class="data-table">
+              <caption class="visually-hidden">Parámetros clave del modelo multiproducto</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Parámetro</th>
+                  <th scope="col">Valor</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Nombre del modelo</td><td>Negocio industrial multiproducto de bebidas y agua</td></tr>
+                <tr><td>Horizonte</td><td>5 años, términos nominales (COP)</td></tr>
+                <tr><td>WACC (tasa de descuento)</td><td>18% efectivo anual</td></tr>
+                <tr><td>Curva de rampa</td><td>50% Año 1 · 70% Año 2 · 85% Año 3 · 100% Años 4–5</td></tr>
+                <tr><td>Líneas</td><td>3 (L1 carbonatada 400&nbsp;mL, L2 energizante 355&nbsp;mL, L3 agua PET 1&nbsp;L)</td></tr>
+                <tr><td>OEE TO-BE (L1 / L2 / L3)</td><td>0.95 / 0.92 / 0.90</td></tr>
+                <tr><td>OEE AS-IS (L1 / L2 / L3)</td><td>0.80 / 0.78 / 0.75</td></tr>
+                <tr><td>Impuesto a la renta</td><td>35%</td></tr>
+                <tr><td>Inversión total (I₀)</td><td>141,252 MM COP</td></tr>
+                <tr><td>VPN base (18% + VT)</td><td>+108,878 MM COP</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="section" id="cta-final" style="text-align:center; padding:3rem 0 0">
+          <h2 class="section__title reveal">Conoce cómo lo lograremos</h2>
+          <p class="section__lead reveal">Revisa la propuesta técnica con el detalle del proceso, indicadores y mejoras planificadas.</p>
+          <div class="hero__ctas reveal" style="margin-top:1.5rem">
+            <a href="propuesta.html" class="btn btn--primary" style="margin-top:0">Ver propuesta técnica</a>
+            <a href="https://forms.gle/qCGVMUiDxzgHxtpv5" target="_blank" rel="noopener noreferrer" class="btn--outline-light" style="border-color:var(--primary);color:var(--primary)">Formulario para inversionistas</a>
+            <a href="contacto.html" class="hero__secondary-cta" style="color:var(--primary)">Contáctenos →</a>
+          </div>
+        </section>
+
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="footer-col__brand">
+            <svg width="24" height="24" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="2" y="8" width="32" height="20" rx="2" stroke="currentColor" stroke-width="2"/><path d="M6 18h8M18 18h12M6 14v8M14 14v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="28" cy="12" r="3" fill="currentColor"/></svg>
+            Gaseo S.A.S.
+          </a>
+          <p>Automatización de Procesos de Manufactura</p>
+          <p>Grupo 4 · UNAL 2026-I</p>
+          <div class="footer-social">
+            <a href="https://github.com/sergiosinlimites/apm" target="_blank" rel="noopener" class="footer-social__link" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+            </a>
+            <a href="https://drive.google.com/drive/u/2/folders/0AO2oxGaDvYBvUk9PVA" target="_blank" rel="noopener" class="footer-social__link" aria-label="Google Drive">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.71 3.5L1.15 15l3.43 5.93L11.14 9.5 7.71 3.5zm1.14 0l6.86 11.86h6.86L15.71 3.5H8.86zM2.29 16l3.43 5.93h13.71L22.86 16H2.29z"/></svg>
+            </a>
+            <a href="https://sergioandresbolanospenagos.atlassian.net/" target="_blank" rel="noopener" class="footer-social__link" aria-label="Jira">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.53 2c0 2.4 1.97 4.35 4.35 4.35h1.78v1.7c0 2.4 1.97 4.35 4.35 4.35V2.84a.84.84 0 00-.84-.84H11.53zM6.77 6.8a4.362 4.362 0 004.34 4.34h1.78v1.72a4.362 4.362 0 004.34 4.34V7.63a.84.84 0 00-.84-.84H6.77zM2 11.6a4.362 4.362 0 004.34 4.34h1.78v1.72c0 2.4 1.97 4.35 4.35 4.35V12.43a.84.84 0 00-.84-.84H2z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col__heading">Módulos</h4>
+          <ul class="footer-col__links">
+            <li><a href="modulos/introduccion.html">Introducción</a></li>
+            <li><a href="modulos/produccion.html">Producción</a></li>
+            <li><a href="modulos/planeacion.html">Planeación</a></li>
+            <li><a href="modulos/robotica.html">Robótica</a></li>
+            <li><a href="modulos/digital-factory.html">Digital Factory</a></li>
+            <li><a href="modulos/control.html">Control (PLC)</a></li>
+            <li><a href="modulos/scada.html">SCADA</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col__heading">Proyecto</h4>
+          <ul class="footer-col__links">
+            <li><a href="evaluacion.html">Inversión</a></li>
+            <li><a href="propuesta.html">Propuesta Técnica</a></li>
+            <li><a href="asignatura.html">Asignatura</a></li>
+            <li><a href="reflexiones.html">Reflexiones</a></li>
+            <li><a href="contacto.html">Contáctenos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col__heading">Legal</h4>
+          <ul class="footer-col__links">
+            <li><a href="privacidad.html">Política de Privacidad</a></li>
+            <li><a href="terminos.html">Términos de Servicio</a></li>
+            <li><a href="cookies.html">Política de Cookies</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Gaseo S.A.S. · Grupo 4 APM · Dpto. Ing. Mecánica y Mecatrónica · Universidad Nacional de Colombia</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

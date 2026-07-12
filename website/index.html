@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gaseo S.A.S. — Proyecto de automatización industrial para una planta embotelladora de bebidas. OEE del 75% al 95%+ mediante control digital, robótica y gemelo digital.">
+  <title>Gaseo S.A.S. · Automatización de Procesos de Manufactura</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header" id="top">
+    <nav class="nav" aria-label="Principal">
+      <a href="#inicio" class="nav__brand" aria-label="Gaseo S.A.S. — Inicio">
+        <svg class="nav__logo-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="2" y="8" width="32" height="20" rx="2" stroke="currentColor" stroke-width="2"/>
+          <path d="M6 18h8M18 18h12M6 14v8M14 14v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="28" cy="12" r="3" fill="currentColor"/>
+        </svg>
+        <span class="nav__logo-text">Gaseo S.A.S.</span>
+      </a>
+      <button type="button" class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" id="nav-toggle">
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="visually-hidden">Abrir menú</span>
+      </button>
+      <ul class="nav__list" id="nav-menu">
+        <li><a href="#inicio" class="nav__link">Inicio</a></li>
+        <li><a href="evaluacion.html" class="nav__link">Inversión</a></li>
+        <li><a href="propuesta.html" class="nav__link">Propuesta</a></li>
+        <li class="nav__item nav__dropdown" data-nav-dropdown>
+          <button type="button" class="nav__dropdown-toggle" id="nav-modules-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="nav-modules-menu">
+            Módulos <span class="nav__dropdown-caret" aria-hidden="true">▾</span>
+          </button>
+          <ul class="nav__dropdown-menu" id="nav-modules-menu" role="menu">
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="modulos/introduccion.html">Introducción</a></li>
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="modulos/produccion.html">Producción</a></li>
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="modulos/planeacion.html">Planeación</a></li>
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="modulos/robotica.html">Robótica</a></li>
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="modulos/digital-factory.html">Digital Factory</a></li>
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="modulos/control.html">Control (PLC)</a></li>
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="modulos/scada.html">SCADA</a></li>
+            <li role="separator" class="nav__dropdown-separator" aria-hidden="true"></li>
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="asignatura.html">Asignatura</a></li>
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="reflexiones.html">Reflexiones</a></li>
+          </ul>
+        </li>
+        <li><a href="contacto.html" class="nav__link">Contáctenos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 1. Hero -->
+    <section class="hero" id="inicio">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="hero__content">
+        <p class="hero__eyebrow">Proyecto académico · APM 2026-I · UNAL Grupo 4</p>
+        <h1 class="hero__title">Automatizamos una planta embotelladora de bebidas</h1>
+        <p class="hero__subtitle">Una propuesta de ingeniería para mejorar la eficiencia operativa de una planta de bebidas usando tecnologías de Industria 4.0.</p>
+        <div class="hero__stats">
+          <div class="hero__stat">
+            <span class="hero__stat-value">~75%</span>
+            <span class="hero__stat-label">OEE estimado actual</span>
+          </div>
+          <div class="hero__stat">
+            <span class="hero__stat-value">95%+</span>
+            <span class="hero__stat-label">OEE objetivo</span>
+          </div>
+          <div class="hero__stat">
+            <span class="hero__stat-value">11</span>
+            <span class="hero__stat-label">Fases · 88 entregables</span>
+          </div>
+        </div>
+        <div class="hero__ctas">
+          <a href="#ruta" class="btn btn--primary">Explorar el proyecto</a>
+          <a href="propuesta.html" class="hero__secondary-cta">Ver propuesta técnica →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. El reto -->
+    <section class="section section--mono-light" id="reto">
+      <div class="container">
+        <header class="section__header reveal">
+          <h2 class="section__title">El reto que queremos resolver</h2>
+          <p class="section__lead">Una planta embotelladora con alta capacidad instalada pero sin el nivel de automatización que le permita operar al máximo de su potencial.</p>
+        </header>
+
+        <div class="challenge-grid">
+          <article class="challenge-card reveal">
+            <div class="challenge-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none"><path d="M4 24h24M8 20v4M16 14v10M24 18v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="8" cy="16" r="4" stroke="currentColor" stroke-width="2"/></svg>
+            </div>
+            <p class="challenge-card__label">Problema</p>
+            <h3 class="challenge-card__title">OEE por debajo del potencial</h3>
+            <p class="challenge-card__desc">Se estima una eficiencia operativa general (OEE) alrededor del 75%, dejando un margen significativo de mejora en disponibilidad, rendimiento y calidad.</p>
+          </article>
+
+          <article class="challenge-card reveal">
+            <div class="challenge-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none"><path d="M6 16h4l4-8 4 16 4-8 4 0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <p class="challenge-card__label">Diagnóstico</p>
+            <h3 class="challenge-card__title">Tiempos sin valor agregado</h3>
+            <p class="challenge-card__desc">El análisis VSM identificó que el cuello de botella no está en las máquinas sino en los tiempos logísticos: movimiento de producto y paletizado manual.</p>
+          </article>
+
+          <article class="challenge-card reveal">
+            <div class="challenge-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none"><path d="M16 4v8M16 20v8M4 16h8M20 16h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="16" r="5" stroke="currentColor" stroke-width="2"/></svg>
+            </div>
+            <p class="challenge-card__label">Solución</p>
+            <h3 class="challenge-card__title">Automatización integrada</h3>
+            <p class="challenge-card__desc">Control PLC, robótica de paletizado, supervisión SCADA y gemelo digital para validar mejoras antes de implementarlas en la planta física.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2b. Propuesta de valor -->
+    <section class="section section--mono-white" id="propuesta-valor">
+      <div class="container">
+        <header class="section__header reveal">
+          <h2 class="section__title">Nuestra propuesta</h2>
+          <p class="section__lead">Integración de sistemas de automatización industrial para una planta de bebidas con tres líneas de producción.</p>
+        </header>
+
+        <div class="challenge-grid">
+          <article class="challenge-card reveal">
+            <div class="challenge-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="18" rx="2" stroke="currentColor" stroke-width="2"/><path d="M4 14h24" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="9" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M10 26h12M16 22v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <p class="challenge-card__label">Acción 1</p>
+            <h3 class="challenge-card__title">Monitoreo inteligente y mantenimiento predictivo</h3>
+            <p class="challenge-card__desc">Implementación de sensores en puntos críticos para medir variables de proceso, aplicar mantenimiento predictivo y reducir fallas. Sistema de monitoreo de paradas en tiempo real mediante SCADA y MES para la toma de decisiones basada en datos.</p>
+          </article>
+
+          <article class="challenge-card reveal">
+            <div class="challenge-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none"><path d="M16 4v6M16 10l6 4v6l-6 4-6-4v-6l6-4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M10 24v4h12v-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="14" r="2" fill="currentColor"/></svg>
+            </div>
+            <p class="challenge-card__label">Acción 2</p>
+            <h3 class="challenge-card__title">Paletizado robótico centralizado</h3>
+            <p class="challenge-card__desc">Un robot centralizado que atiende las tres líneas mediante bandas transportadoras, sistemas de acumulación (buffers) y control inteligente de flujo. Reduce costos frente a múltiples robots, disminuye la dependencia manual y mejora la eficiencia general.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Hoja de ruta -->
+    <section class="section section--mono-white" id="ruta">
+      <div class="container">
+        <header class="section__header reveal">
+          <h2 class="section__title">Hoja de ruta del proyecto</h2>
+          <p class="section__lead">Cuatro grandes etapas estructuran el camino de diagnóstico a validación.</p>
+        </header>
+
+        <div class="roadmap" role="list">
+          <div class="roadmap__step reveal" role="listitem">
+            <div class="roadmap__step-num" aria-hidden="true">1</div>
+            <p class="roadmap__step-phase">Diagnóstico</p>
+            <h3 class="roadmap__step-title">Análisis AS-IS</h3>
+            <p class="roadmap__step-desc">Levantamiento VSM, DAP e indicadores operativos del estado actual de la planta.</p>
+          </div>
+          <div class="roadmap__step reveal" role="listitem">
+            <div class="roadmap__step-num" aria-hidden="true">2</div>
+            <p class="roadmap__step-phase">Diseño</p>
+            <h3 class="roadmap__step-title">Propuesta TO-BE</h3>
+            <p class="roadmap__step-desc">Rediseño del flujo de valor, especificación de tecnologías y arquitectura de control ISA-95.</p>
+          </div>
+          <div class="roadmap__step reveal" role="listitem">
+            <div class="roadmap__step-num" aria-hidden="true">3</div>
+            <p class="roadmap__step-phase">Implementación virtual</p>
+            <h3 class="roadmap__step-title">Simulación y control</h3>
+            <p class="roadmap__step-desc">Simulación en Tecnomatix, programación PLC, celda robotizada en RobotStudio y gemelo digital.</p>
+          </div>
+          <div class="roadmap__step reveal" role="listitem">
+            <div class="roadmap__step-num" aria-hidden="true">4</div>
+            <p class="roadmap__step-phase">Evaluación</p>
+            <h3 class="roadmap__step-title">Viabilidad económica</h3>
+            <p class="roadmap__step-desc">Análisis de costos, ROI, TIR, VPN y Payback para respaldar la toma de decisiones.</p>
+          </div>
+        </div>
+
+        <div style="text-align:center; margin-top:3rem" class="reveal">
+          <a href="propuesta.html" class="section__crosslink">Ver detalle técnico →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Productos -->
+    <section class="section section--mono-light" id="productos">
+      <div class="container">
+        <header class="section__header reveal">
+          <h2 class="section__title">Productos de referencia</h2>
+          <p class="section__lead">El proyecto analiza tres familias de bebidas como casos de estudio representativos.</p>
+        </header>
+
+        <div class="product-simple-grid">
+          <article class="product-simple-card product-simple-card--primary reveal">
+            <div class="product-simple-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 64 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 8h24l4 12v52a4 4 0 0 1-4 4H20a4 4 0 0 1-4-4V20l4-12Z" stroke="currentColor" stroke-width="2.5"/>
+                <path d="M18 28h28" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <ellipse cx="32" cy="10" rx="14" ry="4" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </div>
+            <h3 class="product-simple-card__name">Gaseosa Carbonatada</h3>
+            <p class="product-simple-card__sub">Retornable 400 ml · Vidrio</p>
+            <span class="product-simple-card__tag">Distribución masiva</span>
+          </article>
+
+          <article class="product-simple-card product-simple-card--success reveal">
+            <div class="product-simple-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 64 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="32" cy="16" rx="22" ry="8" stroke="currentColor" stroke-width="2"/>
+                <path d="M10 16v40c0 6 10 12 22 12s22-6 22-12V16" stroke="currentColor" stroke-width="2.5"/>
+                <path d="M32 28v24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="product-simple-card__name">Bebida Energética</h3>
+            <p class="product-simple-card__sub">Lata 473 ml · Aluminio</p>
+            <span class="product-simple-card__tag">Mercado premium</span>
+          </article>
+
+          <article class="product-simple-card product-simple-card--info reveal">
+            <div class="product-simple-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 64 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="32" cy="12" rx="20" ry="8" stroke="currentColor" stroke-width="2.5"/>
+                <path d="M12 12v52c0 4 9 8 20 8s20-4 20-8V12" stroke="currentColor" stroke-width="2.5"/>
+                <path d="M32 4V0M28 2h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M16 36h32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="product-simple-card__name">Garrafón de Agua</h3>
+            <p class="product-simple-card__sub">20 L · Polietileno (PE)</p>
+            <span class="product-simple-card__tag">Gran Volumen (GV)</span>
+          </article>
+        </div>
+
+        <div style="text-align:center; margin-top:2.5rem" class="reveal">
+          <a href="propuesta.html#indicadores" class="section__crosslink">Ver indicadores operativos →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Modelo de negocio -->
+    <section class="section section--mono-white" id="modelo-negocio">
+      <div class="container">
+        <header class="section__header reveal">
+          <h2 class="section__title">Modelo de negocio</h2>
+          <p class="section__lead">La propuesta se apoya en un modelo estructurado que define los segmentos de clientes, la propuesta de valor y las fuentes de ingreso del proyecto.</p>
+        </header>
+
+        <figure class="biz-model-figure reveal">
+          <div data-osd-src="img/pagina/modelo-negocio.png" style="width:100%;height:500px;border-radius:12px;overflow:hidden" role="img" aria-label="Business Model Canvas — Modelo de negocio inicial de Gaseo S.A.S."></div>
+          <figcaption>Modelo de negocio inicial · Fuente: equipo Gaseo S.A.S. APM 2026-I — Usa scroll o pinch para hacer zoom</figcaption>
+        </figure>
+
+        <div style="text-align:center; margin-top:2rem" class="reveal">
+          <a href="evaluacion.html" class="section__crosslink">Ver evaluación económica →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. CTA final oscuro -->
+    <section class="section--cta-dark" id="explorar">
+      <div class="container" style="text-align:center">
+        <h2 class="section__title reveal">Profundiza en el proyecto</h2>
+        <p class="section__lead reveal">Toda la documentación técnica y financiera está disponible en las siguientes secciones.</p>
+        <div class="cta-buttons reveal">
+          <a href="propuesta.html" class="btn btn--primary" style="margin-top:0">Propuesta técnica</a>
+          <a href="evaluacion.html" class="btn--outline-light">Evaluación económica</a>
+          <a href="contacto.html" class="btn--outline-light">Contáctenos</a>
+          <a href="https://forms.gle/qCGVMUiDxzgHxtpv5" target="_blank" rel="noopener noreferrer" class="btn--outline-light">Formulario para inversionistas</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="footer-col__brand">
+            <svg width="24" height="24" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="2" y="8" width="32" height="20" rx="2" stroke="currentColor" stroke-width="2"/><path d="M6 18h8M18 18h12M6 14v8M14 14v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="28" cy="12" r="3" fill="currentColor"/></svg>
+            Gaseo S.A.S.
+          </a>
+          <p>Automatización de Procesos de Manufactura</p>
+          <p>Grupo 4 · UNAL 2026-I</p>
+          <div class="footer-social">
+            <a href="https://github.com/sergiosinlimites/apm" target="_blank" rel="noopener" class="footer-social__link" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+            </a>
+            <a href="https://drive.google.com/drive/u/2/folders/0AO2oxGaDvYBvUk9PVA" target="_blank" rel="noopener" class="footer-social__link" aria-label="Google Drive">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.71 3.5L1.15 15l3.43 5.93L11.14 9.5 7.71 3.5zm1.14 0l6.86 11.86h6.86L15.71 3.5H8.86zM2.29 16l3.43 5.93h13.71L22.86 16H2.29z"/></svg>
+            </a>
+            <a href="https://sergioandresbolanospenagos.atlassian.net/" target="_blank" rel="noopener" class="footer-social__link" aria-label="Jira">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.53 2c0 2.4 1.97 4.35 4.35 4.35h1.78v1.7c0 2.4 1.97 4.35 4.35 4.35V2.84a.84.84 0 00-.84-.84H11.53zM6.77 6.8a4.362 4.362 0 004.34 4.34h1.78v1.72a4.362 4.362 0 004.34 4.34V7.63a.84.84 0 00-.84-.84H6.77zM2 11.6a4.362 4.362 0 004.34 4.34h1.78v1.72c0 2.4 1.97 4.35 4.35 4.35V12.43a.84.84 0 00-.84-.84H2z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col__heading">Módulos</h4>
+          <ul class="footer-col__links">
+            <li><a href="modulos/introduccion.html">Introducción</a></li>
+            <li><a href="modulos/produccion.html">Producción</a></li>
+            <li><a href="modulos/planeacion.html">Planeación</a></li>
+            <li><a href="modulos/robotica.html">Robótica</a></li>
+            <li><a href="modulos/digital-factory.html">Digital Factory</a></li>
+            <li><a href="modulos/control.html">Control (PLC)</a></li>
+            <li><a href="modulos/scada.html">SCADA</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col__heading">Proyecto</h4>
+          <ul class="footer-col__links">
+            <li><a href="evaluacion.html">Inversión</a></li>
+            <li><a href="propuesta.html">Propuesta Técnica</a></li>
+            <li><a href="asignatura.html">Asignatura</a></li>
+            <li><a href="reflexiones.html">Reflexiones</a></li>
+            <li><a href="contacto.html">Contáctenos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col__heading">Legal</h4>
+          <ul class="footer-col__links">
+            <li><a href="privacidad.html">Política de Privacidad</a></li>
+            <li><a href="terminos.html">Términos de Servicio</a></li>
+            <li><a href="cookies.html">Política de Cookies</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Gaseo S.A.S. · Grupo 4 APM · Dpto. Ing. Mecánica y Mecatrónica · Universidad Nacional de Colombia</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/openseadragon@4.1/build/openseadragon/openseadragon.min.js"></script>
+  <script src="js/osd-init.js"></script>
+</body>
+</html>
