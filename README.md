@@ -10,7 +10,7 @@
 
 *Del diagnóstico en planta al gemelo digital: ingeniería de automatización aplicada al sector bebidas.*
 
-[Explorar el sitio](https://sergiosinlimites.github.io/apm/) · [Ver el código](https://github.com/sergiosinlimites/apm)
+[Explorar el sitio](https://santiagofonsecap.github.io/APM_Page/) · [Ver el código](https://github.com/SantiagoFonsecap/APM_Page)
 
 </div>
 
