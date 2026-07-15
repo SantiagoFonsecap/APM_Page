@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gestión de Producción — Gaseo S.A.S. · DAP, VSM, indicadores AS-IS y validación en Tecnomatix Plant Simulation. Planta embotelladora de referencia · Bogotá.">
+  <title>Gestión de Producción · Gaseo S.A.S.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="module-page">
+  <header class="site-header" id="top">
+    <nav class="nav" aria-label="Principal">
+      <a href="../index.html#inicio" class="nav__brand" aria-label="Gaseo S.A.S. — Inicio">
+        <svg class="nav__logo-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="2" y="8" width="32" height="20" rx="2" stroke="currentColor" stroke-width="2"/>
+          <path d="M6 18h8M18 18h12M6 14v8M14 14v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="28" cy="12" r="3" fill="currentColor"/>
+        </svg>
+        <span class="nav__logo-text">Gaseo S.A.S.</span>
+      </a>
+      <button type="button" class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" id="nav-toggle">
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="visually-hidden">Abrir menú</span>
+      </button>
+      <ul class="nav__list" id="nav-menu">
+        <li><a href="../index.html" class="nav__link">Inicio</a></li>
+        <li><a href="../evaluacion.html" class="nav__link">Inversión</a></li>
+        <li><a href="../propuesta.html" class="nav__link">Propuesta</a></li>
+        <li class="nav__item nav__dropdown" data-nav-dropdown>
+          <button type="button" class="nav__dropdown-toggle" id="nav-modules-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="nav-modules-menu">
+            Módulos <span class="nav__dropdown-caret" aria-hidden="true">▾</span>
+          </button>
+          <ul class="nav__dropdown-menu" id="nav-modules-menu" role="menu">
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="introduccion.html">Introducción</a></li>
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="produccion.html" aria-current="page">Producción</a></li>
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="planeacion.html">Planeación</a></li>
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="robotica.html">Robótica</a></li>
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="digital-factory.html">Digital Factory</a></li>
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="control.html">Control (PLC)</a></li>
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="scada.html">SCADA</a></li>
+            <li role="separator" class="nav__dropdown-separator" aria-hidden="true"></li>
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="../asignatura.html">Asignatura</a></li>
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="../reflexiones.html">Reflexiones</a></li>
+          </ul>
+        </li>
+        <li><a href="../contacto.html" class="nav__link">Contáctenos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="module-main">
+    <section class="hero hero--compact" aria-labelledby="mod-title">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="container hero__content hero__content--compact">
+        <p class="hero__eyebrow">Módulo evaluativo · APM 2026-I</p>
+        <h1 class="hero__title" id="mod-title">Gestión de Producción</h1>
+        <p class="hero__subtitle">Prof. Carlos Julio Cortés R.</p>
+        <p class="hero__tagline">Diagnóstico y mejora del flujo de valor en la línea embotelladora: mapeo VSM, indicadores operativos, documentación de proceso (DAP) y experimentación en Tecnomatix Plant Simulation para comparar escenarios AS-IS vs TO-BE.</p>
+      </div>
+    </section>
+
+    <article class="module-content">
+      <div class="container">
+        <p class="module-content__intro reveal">Este módulo consolida el levantamiento en planta embotelladora de referencia (Bogotá), los diagramas analíticos de proceso y los indicadores AS-IS que alimentan el modelo de simulación y las propuestas de mejora.</p>
+
+        <section class="module-section reveal" id="layout-planta" aria-labelledby="sec-layout">
+          <header class="section__header reveal">
+            <h2 class="module-section__title" id="sec-layout">Vista de Planta</h2>
+            <hr class="module-section__divider" aria-hidden="true">
+          </header>
+          <figure class="reveal" style="margin:1rem 0 1.5rem;text-align:center">
+            <img src="../img/diagramas/layout-planta-paletizado-garrafones.png" alt="Layout de planta de la línea de garrafón 20 L: lavado, inspección, etiquetado, llenado, inspección y tapado, con la celda central de paletizado alrededor del robot IRB 660 (transportadores de garrafones y canastas, y tarimas de garrafones y canastas)." width="2720" height="1980" loading="lazy" style="max-width:100%;height:auto;border-radius:8px">
+            <figcaption style="font-size:0.82rem;color:var(--text-muted);margin-top:0.5rem">Layout de planta — línea de garrafón 20 L y celda central de paletizado con el robot IRB 660 (cotas en mm).</figcaption>
+          </figure>
+        </section>
+
+        <section class="module-section module-section--alt reveal" id="flujo-general" aria-labelledby="sec-flujo">
+          <header class="section__header reveal">
+            <h2 class="module-section__title" id="sec-flujo">Flujo General del Proceso</h2>
+            <hr class="module-section__divider" aria-hidden="true">
+          </header>
+          <figure class="reveal" style="margin:1rem 0 1.5rem;text-align:center">
+            <img src="../img/diagramas/flujo-proceso-general.svg" alt="Flujo general de manufactura: 13 etapas desde Insumos hasta Despacho" style="max-width:100%;height:auto;border-radius:8px">
+            <figcaption style="font-size:0.82rem;color:var(--text-muted);margin-top:0.5rem">Flujo general de manufactura — desde insumos hasta despacho.</figcaption>
+          </figure>
+        </section>
+
+        <section class="module-section reveal" id="as-is" aria-labelledby="sec-contexto">
+          <header class="section__header reveal">
+            <h2 class="module-section__title" id="sec-contexto">Visita técnica y productos</h2>
+            <hr class="module-section__divider" aria-hidden="true">
+          </header>
+          <p class="module-section__lead reveal">A partir de la visita técnica a la planta embotelladora de referencia en Bogotá y los fundamentos teóricos abordados en el módulo, se analizan las dos líneas de producción de la planta: gaseosa cola en botella de vidrio retornable de 400 ml (empacada en canastas de 24) y agua en garrafón retornable de 20 L.</p>
+          <div class="module-stats reveal">
+            <div class="stat-card stat-card--dark">
+              <span class="stat-card__value">2</span>
+              <span class="stat-card__label">Líneas analizadas</span>
+            </div>
+            <div class="stat-card stat-card--dark">
+              <span class="stat-card__value">2</span>
+              <span class="stat-card__label">Familias de producto</span>
+            </div>
+            <div class="stat-card stat-card--dark">
+              <span class="stat-card__value">900–20k</span>
+              <span class="stat-card__label">u/h (rango por producto)</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="module-section module-section--alt reveal" id="dap" aria-labelledby="sec-dap">
+          <header class="section__header reveal">
+            <h2 class="module-section__title" id="sec-dap">Diagrama de Análisis de Proceso (DAP)</h2>
+            <hr class="module-section__divider" aria-hidden="true">
+          </header>
+          <p class="module-section__lead reveal">Se elaboró el Diagrama de Análisis de Proceso (formato Flow Process Chart, norma ASME) de la línea de gaseosa 400 mL retornable, documentando operaciones, transportes, inspecciones y almacenamientos.</p>
+
+          <!-- [REMOVAL-026] Diagrama SVG DAP y tablas simplificadas reemplazados por tablas Flow Process Chart completas (formato Excel ASME) -->
+
+          <div class="fpc-card reveal">
+            <div class="fpc-header">
+              <div class="fpc-header__title">FLOW PROCESS CHART</div>
+              <div class="fpc-header__subtitle">Operación: Embotellado de Gaseosa 400ml retornable</div>
+            </div>
+            <div class="table-wrap">
+              <table class="data-table fpc-table">
+                <caption class="visually-hidden">Flow Process Chart: gaseosa 400 ml retornable, 25 operaciones con símbolos ASME</caption>
+                <thead>
+                  <tr>
+                    <th rowspan="2" scope="col">#</th>
+                    <th rowspan="2" scope="col">Descripción</th>
+                    <th rowspan="2" scope="col">Cantidad</th>
+                    <th rowspan="2" scope="col">Distancia (m)</th>
+                    <th rowspan="2" scope="col">Tiempo (s)</th>
+                    <th colspan="5" class="fpc-table__tipo" scope="colgroup">Tipo de elemento</th>
+                    <th rowspan="2" scope="col">Observaciones</th>
+                  </tr>
+                  <tr>
+                    <th scope="col" class="fpc-table__sym-head" title="Operación"><span aria-hidden="true">○</span></th>
+                    <th scope="col" class="fpc-table__sym-head" title="Transporte"><span aria-hidden="true">→</span></th>
+                    <th scope="col" class="fpc-table__sym-head" title="Demora"><span aria-hidden="true">D</span></th>
+                    <th scope="col" class="fpc-table__sym-head" title="Inspección"><span aria-hidden="true">□</span></th>
+                    <th scope="col" class="fpc-table__sym-head" title="Almacenamiento"><span aria-hidden="true">▽</span></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>1</td><td>Saneamiento previo a cambio de sabor</td><td>Única vez</td><td>—</td><td>2-3 hs</td><td class="fpc-cell--sym"><span class="fpc-dot fpc-dot--op" aria-label="Operación">●</span></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td>Depende del producto anterior</td></tr>
+                  <tr><td>2</td><td>Recepción de agua de red o pozo</td><td>1 Lote</td><td>50</td><td>259,2</td><td class="fpc-cell--sym"><span class="fpc-dot fpc-dot--op" aria-label="Operación">●</span></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td>Agua acueducto</td></tr>
+                  <tr><td>3</td><td>Tratamiento y purificación del agua (filtración, carbón activado, UV)</td><td>1 Lote</td><td>—</td><td>259,2</td><td class="fpc-cell--sym"><span class="fpc-dot fpc-dot--op" aria-label="Operación">●</span></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td></td></tr>
+                  <tr><td>4</td><td>Control de calidad del agua</td><td>1 muestra</td><td>—</td><td>30</td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"><span class="fpc-dot fpc-dot--inspect" aria-label="Inspección">●</span></td><td class="fpc-cell--sym"></td><td>pH, conductividad</td></tr>
+                  <tr><td>5</td><td>Refinamiento de azúcar</td><td>1 lote</td><td>—</td><td>240</td><td class="fpc-cell--sym"><span class="fpc-dot fpc-dot--op" aria-label="Operación">●</span></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td></td></tr>
+                  <tr><td>6</td><td>Preparación del jarabe simple (agua + azúcar)</td><td>1 Lote</td><td>—</td><td>259,2</td><td class="fpc-cell--sym"><span class="fpc-dot fpc-dot--op" aria-label="Operación">●</span></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td>Disolución azúcar</td></tr>
+                  <tr><td>7</td><td>Mezcla con concentrado de sabor (jarabe terminado)</td><td>1 Lote</td><td>—</td><td>259,2</td><td class="fpc-cell--sym"><span class="fpc-dot fpc-dot--op" aria-label="Operación">●</span></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td></td></tr>
+                  <tr><td>8</td><td>Verificación del jarabe</td><td>1 muestra</td><td>—</td><td>20</td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"><span class="fpc-dot fpc-dot--inspect" aria-label="Inspección">●</span></td><td class="fpc-cell--sym"></td><td>Medición de °Brix</td></tr>
+                  <tr><td>9</td><td>Envío del jarabe a tanque de mezcla</td><td>1 Lote</td><td>6</td><td>100</td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"><span class="fpc-dot fpc-dot--transport" aria-label="Transporte">●</span></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td>Bombeo por tubería</td></tr>
+                  <tr><td>10</td><td>Enfriamiento del jarabe</td><td>1 Lote</td><td>—</td><td>259,2</td><td class="fpc-cell--sym"><span class="fpc-dot fpc-dot--op" aria-label="Operación">●</span></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td></td></tr>
+                  <tr><td>11</td><td>Carbonatación (mezcla con CO₂)</td><td>1 Lote</td><td>—</td><td>30</td><td class="fpc-cell--sym"><span class="fpc-dot fpc-dot--op" aria-label="Operación">●</span></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td>Proceso en carbonatador</td></tr>
+                  <tr><td>12</td><td>Envío a línea de llenado</td><td>1 Lote</td><td>8</td><td>8</td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"><span class="fpc-dot fpc-dot--transport" aria-label="Transporte">●</span></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td></td></tr>
+                  <tr><td>13</td><td>Recepción de botellas de vidrio retornables</td><td>1 Botella</td><td>—</td><td>0,18</td><td class="fpc-cell--sym"><span class="fpc-dot fpc-dot--op" aria-label="Operación">●</span></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td></td></tr>
+                  <tr><td>14</td><td>Rectificado de etiquetado</td><td>1 Botella</td><td>—</td><td>0,18</td><td class="fpc-cell--sym"><span class="fpc-dot fpc-dot--op" aria-label="Operación">●</span></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td>Cuando es necesario se corrige la impresión</td></tr>
+                  <tr><td>15</td><td>Lavado y desinfección de botellas</td><td>1 Botella</td><td>—</td><td>0,18</td><td class="fpc-cell--sym"><span class="fpc-dot fpc-dot--op" aria-label="Operación">●</span></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td>Lavadora industrial</td></tr>
+                  <tr><td>16</td><td>Inspección automática de botellas</td><td>1 Botella</td><td>—</td><td>0,18</td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"><span class="fpc-dot fpc-dot--inspect" aria-label="Inspección">●</span></td><td class="fpc-cell--sym"></td><td>Cámaras detectan defectos</td></tr>
+                  <tr><td>17</td><td>Botellas limpias a llenadora</td><td>1 Botella</td><td>20</td><td>20</td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"><span class="fpc-dot fpc-dot--transport" aria-label="Transporte">●</span></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td></td></tr>
+                  <tr><td>18</td><td>Llenado de bebida (400 ml)</td><td>1 Botella</td><td>—</td><td>0,18</td><td class="fpc-cell--sym"><span class="fpc-dot fpc-dot--op" aria-label="Operación">●</span></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td></td></tr>
+                  <tr><td>19</td><td>Tapado con tapa corona</td><td>1 Botella</td><td>—</td><td>0,15</td><td class="fpc-cell--sym"><span class="fpc-dot fpc-dot--op" aria-label="Operación">●</span></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td></td></tr>
+                  <tr><td>20</td><td>Verificación de nivel y sellado</td><td>1 Botella</td><td>—</td><td>0,1</td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"><span class="fpc-dot fpc-dot--inspect" aria-label="Inspección">●</span></td><td class="fpc-cell--sym"></td><td>Sensor o visión artificial</td></tr>
+                  <tr><td>21</td><td>Codificación de lote y fecha</td><td>1 Botella</td><td>—</td><td>0,12</td><td class="fpc-cell--sym"><span class="fpc-dot fpc-dot--op" aria-label="Operación">●</span></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td></td></tr>
+                  <tr><td>22</td><td>Control final de calidad</td><td>1 Muestra</td><td>—</td><td>30</td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"><span class="fpc-dot fpc-dot--inspect" aria-label="Inspección">●</span></td><td class="fpc-cell--sym"></td><td></td></tr>
+                  <tr><td>23</td><td>Transporte a bodega</td><td>1 botella</td><td>100</td><td>100</td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"><span class="fpc-dot fpc-dot--transport" aria-label="Transporte">●</span></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td>Bandas muy largas</td></tr>
+                  <tr><td>24</td><td>Empaque en canastillas</td><td>24 botellas</td><td>—</td><td>4,32</td><td class="fpc-cell--sym"><span class="fpc-dot fpc-dot--op" aria-label="Operación">●</span></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td></td></tr>
+                  <tr><td>25</td><td>Almacenamiento en bodega</td><td>1 lote</td><td>—</td><td>255</td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"></td><td class="fpc-cell--sym"><span class="fpc-dot fpc-dot--storage" aria-label="Almacenamiento">●</span></td><td>1440 u en palets</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="fpc-summary">Operaciones: 15 · Transportes: 4 · Inspecciones: 5 · Almacenamientos: 1 <span class="fpc-summary__note">(sin Demoras)</span></p>
+          </div>
+
+        </section>
+
+        <section class="module-section reveal" id="kpi-as-is" aria-labelledby="sec-kpi">
+          <header class="section__header reveal">
+            <h2 class="module-section__title" id="sec-kpi">Indicadores AS-IS</h2>
+            <hr class="module-section__divider" aria-hidden="true">
+          </header>
+          <p class="module-section__lead reveal">Se calcularon los indicadores de manufactura de cada línea, obteniendo un OEE AS-IS de 71,4% en la línea de gaseosa y 73,4% en la de garrafón.</p>
+          <div class="module-stats reveal">
+            <div class="stat-card">
+              <span class="stat-card__value">71.4%</span>
+              <span class="stat-card__label">OEE Gaseosa</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-card__value">73.4%</span>
+              <span class="stat-card__label">OEE Garrafón</span>
+            </div>
+          </div>
+          <div class="table-wrap reveal">
+            <table class="data-table">
+              <caption class="visually-hidden">Indicadores comparativos por línea de producción</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Indicador</th>
+                  <th scope="col">Gaseosa 400ml</th>
+                  <th scope="col">Garrafón 20L</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Demanda mínima</td><td>20,000 bot/h</td><td>900 u/h</td></tr>
+                <tr><td>Takt time</td><td>0.18 s/bot</td><td>4.0 s/u</td></tr>
+                <tr><td>Tasa de producción</td><td>16,180 bot/h</td><td>864 u/h</td></tr>
+                <tr><td>Disponibilidad (A)</td><td>92.0%</td><td>92.4%</td></tr>
+                <tr><td>Rendimiento (PE)</td><td>80.9%</td><td>82.2%</td></tr>
+                <tr><td>Calidad (QR)</td><td>96.0%</td><td>96.7%</td></tr>
+                <tr class="data-table__highlight"><td>OEE (A × PE × QR)</td><td>71.4%</td><td>73.4%</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="module-section module-section--alt reveal" id="vsm" aria-labelledby="sec-vsm">
+          <header class="section__header reveal">
+            <h2 class="module-section__title" id="sec-vsm">Value Stream Mapping (VSM)</h2>
+            <hr class="module-section__divider" aria-hidden="true">
+          </header>
+          <p class="module-section__lead reveal">Se elaboraron mapas de flujo de valor (VSM) estado actual para cada línea. La conclusión principal del equipo fue que <strong>el cuello de botella es logístico, no en las máquinas</strong>: los tiempos de movimiento y paletizado representan la mayor proporción de tiempo sin valor agregado.</p>
+          <div class="module-note reveal">
+            <strong>Lead times consolidados (Taller 1):</strong> Lead Time Gaseosa: 572s (VA 391s, NVA 181s) · Lead Time Garrafón: 607.6s (NVA 432.6s)
+          </div>
+          <p class="reveal"><strong>Gaseosa 400ml.</strong> La etapa de lavado industrial toma ~120s de ciclo con 95% uptime. Con flujo de 5.55 bot/s, la llenadora y etiquetadora tardan 7s y 9s respectivamente (98% y 95% uptime). El Lead Time cierra en 572s, confirmando que la mejora debe enfocarse en almacenamiento y movimiento de producto terminado.</p>
+          <p class="reveal"><strong>Garrafón 20L.</strong> 900 u/h. Línea de gran volumen con takt de 4.0 s/u.</p>
+
+          <div class="vsm-gallery reveal">
+            <div class="vsm-item">
+              <p class="vsm-item__title">Línea 1: Gaseosa Carbonatada 400 mL</p>
+              <div class="vsm-item__frame vsm-item__frame--raster">
+                <img src="../img/diagramas/vsm-final.png" alt="VSM estado actual — Gaseosa Carbonatada Retornable" class="vsm-item__img" loading="lazy">
+              </div>
+            </div>
+
+            <div class="vsm-item">
+              <p class="vsm-item__title">Línea 2: Garrafón de agua 20 L</p>
+              <object data="../docs/vsm-galones.pdf" type="application/pdf" width="100%" height="500" class="vsm-pdf">
+                <p>No se puede mostrar el PDF. <a href="../docs/vsm-galones.pdf" target="_blank" rel="noopener">Descargar VSM Garrafón 20 L</a></p>
+              </object>
+            </div>
+          </div>
+        </section>
+
+        <section class="module-section reveal" id="to-be" aria-labelledby="sec-tobe">
+          <header class="section__header reveal">
+            <h2 class="module-section__title" id="sec-tobe">Diseño TO-BE</h2>
+            <hr class="module-section__divider" aria-hidden="true">
+          </header>
+          <p class="module-section__lead reveal">El estado futuro conserva las estaciones automatizadas de ambas líneas e introduce <strong>dos mejoras de automatización</strong> en los puntos manuales críticos del fin de línea, identificados en el VSM y en los diagramas de proceso.</p>
+          <ul class="module-list reveal">
+            <li><strong>Mejora 1 — Actuador neumático de tapado de garrafones:</strong> un cilindro neumático de prensado (tipo <em>press-on</em>) reemplaza el tapado manual con un ciclo de 0,30 s por garrafón —muy por debajo del takt de 4 s—, con fuerza de sellado uniforme y verificable, y sin contacto manual con la boquilla del envase.</li>
+            <li><strong>Mejora 2 — Celda robotizada de paletizado (ABB IRB 660):</strong> un único robot central paletiza en paralelo las canastas de gaseosa y los garrafones, eliminando el paletizado manual y dando continuidad al flujo hasta el pallet.</li>
+          </ul>
+
+          <div class="table-wrap reveal">
+            <table class="data-table">
+              <caption class="visually-hidden">Comparación teórica AS-IS vs TO-BE</caption>
+              <thead>
+                <tr><th scope="col">Variable</th><th scope="col">AS-IS</th><th scope="col">TO-BE</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Tapado de garrafones</td><td>Manual: 1 operario coloca la tapa cada 4 s</td><td>Actuador neumático, 0,30 s/ciclo, sin intervención humana</td></tr>
+                <tr><td>Paletizado (ambas líneas)</td><td>Manual, sin solución definida</td><td>Celda robotizada IRB 660 compartida</td></tr>
+                <tr><td>Operarios en tareas manuales críticas</td><td>4 por turno (12 por día)</td><td>2 por turno (6 por día)</td></tr>
+                <tr><td>Carga manipulada en paletizado</td><td>≈ 36 t/h entre ambas líneas</td><td>0 t/h (paletizado automatizado)</td></tr>
+                <tr><td>Riesgo ergonómico</td><td>Alto: cargas de 20–21 kg a alta frecuencia</td><td>Eliminado en tapado y paletizado</td></tr>
+                <tr class="data-table__highlight"><td>Continuidad del flujo</td><td>Interrumpida al final de línea</td><td>Flujo continuo hasta el pallet</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="module-note reveal">
+            El detalle de la celda robotizada (selección del IRB 660, balance de ciclos y seguridad) se documenta en el módulo de Robótica.
+            <br>
+            <a href="robotica.html#balance" class="section__crosslink" style="display:inline-block;margin-top:0.65rem;font-weight:600">Ir a Celdas Robotizadas — Balance de ciclos →</a>
+          </div>
+        </section>
+
+        <section class="module-section module-section--alt reveal" id="simulacion" aria-labelledby="sec-sim">
+          <header class="section__header reveal">
+            <h2 class="module-section__title" id="sec-sim">Simulación de eventos discretos</h2>
+            <hr class="module-section__divider" aria-hidden="true">
+          </header>
+          <p class="module-section__lead reveal">El modelo de simulación permite cuantificar el impacto de cambios logísticos y de balanceo de línea antes de comprometer CAPEX, cerrando el ciclo entre diagnóstico VSM, DAP e indicadores.</p>
+          <ul class="module-list reveal">
+            <li>Corridas AS-IS calibradas frente a tiempos de proceso y colas observados.</li>
+            <li>Experimentos TO-BE (buffers, rutas internas, políticas de paletizado).</li>
+            <li>Anexo de supuestos, réplicas y validación estadística básica.</li>
+          </ul>
+
+          <h3 class="module-section__subtitle reveal">Throughput y OEE simulados</h3>
+          <figure class="simulation-figure reveal">
+            <img src="../img/simulacion/simu-agua-20l.png" alt="Simulación Tecnomatix - Agua 20L" class="module-section__img" loading="lazy">
+            <figcaption>Modelo de simulación en Tecnomatix Plant Simulation — Línea Agua (Garrafón 20L)</figcaption>
+          </figure>
+
+          <div class="download-grid reveal">
+            <h4>Archivos de simulación (Tecnomatix Plant Simulation)</h4>
+            <div class="download-cards">
+              <a href="../docs/simulacion/CocaCola400mL-v1.spp" class="download-card" download>
+                <span class="download-card__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                </span>
+                <span class="download-card__name">Gaseosa 400mL v1.0</span>
+                <span class="download-card__size">.spp · 328 KB</span>
+              </a>
+              <a href="../docs/simulacion/CocaCola400mL-v2.spp" class="download-card" download>
+                <span class="download-card__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                </span>
+                <span class="download-card__name">Gaseosa 400mL v2.0</span>
+                <span class="download-card__size">.spp · 328 KB</span>
+              </a>
+              <a href="../docs/simulacion/Garrafon-20L.spp" class="download-card" download>
+                <span class="download-card__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                </span>
+                <span class="download-card__name">Garrafón 20L</span>
+                <span class="download-card__size">.spp · 3.9 MB</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="module-note reveal">
+            <strong>Archivo de simulación:</strong> El modelo AS-IS de la línea de gaseosa está implementado en Tecnomatix Plant Simulation.
+            <a href="https://drive.google.com/drive/u/2/folders/0AO2oxGaDvYBvUk9PVA" target="_blank" rel="noopener" style="color:var(--primary-dark);font-weight:600">Descargar desde Google Drive →</a>
+          </div>
+
+          <div class="placeholder-card reveal">
+            <p class="placeholder-card__note"><strong>Próximos pasos:</strong> El equipo debe abrir el archivo <code>.spp</code> en Tecnomatix Plant Simulation y exportar: (1) screenshot del layout 2D del modelo, (2) gráfica de estados por estación, (3) resultados de throughput/OEE, y opcionalmente (4) video de la animación de simulación.</p>
+          </div>
+        </section>
+
+        <section class="video-showcase reveal" id="videos">
+          <h3 class="video-showcase__title">Videos del Módulo</h3>
+          <p class="video-showcase__lead">Material audiovisual de gestión de producción.</p>
+          <div class="video-grid">
+            <div class="video-card video-card--embed">
+              <div class="video-card__poster">
+                <iframe
+                  src="https://www.youtube.com/embed/GMI3L5Nlh-I?rel=0&amp;list=PLD4Xb8-qGPUlaF_dUElX0ga5PUIOzzxSq"
+                  title="Value Stream Map — Gaseosa retornable 400 mL"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                  loading="lazy"
+                  referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              </div>
+              <div class="video-card__info">
+                <h4 class="video-card__name">VSM — Gaseosa retornable 400 mL</h4>
+                <p class="video-card__meta">Mapa de flujo de valor del proceso AS-IS · YouTube · 2026</p>
+                <p style="margin:0.5rem 0 0;font-size:0.82rem"><a href="https://www.youtube.com/watch?v=GMI3L5Nlh-I&amp;list=PLD4Xb8-qGPUlaF_dUElX0ga5PUIOzzxSq&amp;index=3" target="_blank" rel="noopener" style="color:var(--primary);font-weight:600">Abrir en YouTube →</a></p>
+              </div>
+            </div>
+            <div class="video-card video-card--embed">
+              <div class="video-card__poster">
+                <iframe
+                  src="https://www.youtube.com/embed/SXd1KmWh4pw?rel=0&amp;list=PLD4Xb8-qGPUlaF_dUElX0ga5PUIOzzxSq"
+                  title="Simulación de planta — Gaseosas 400 mL (Plant Simulation)"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                  loading="lazy"
+                  referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              </div>
+              <div class="video-card__info">
+                <h4 class="video-card__name">Simulación de planta (400 mL)</h4>
+                <p class="video-card__meta">Tecnomatix Plant Simulation — línea gaseosa retornable · YouTube · 2026</p>
+                <p style="margin:0.5rem 0 0;font-size:0.82rem"><a href="https://www.youtube.com/watch?v=SXd1KmWh4pw&amp;list=PLD4Xb8-qGPUlaF_dUElX0ga5PUIOzzxSq&amp;index=4" target="_blank" rel="noopener" style="color:var(--primary);font-weight:600">Abrir en YouTube →</a></p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="../index.html" class="footer-col__brand">
+            <svg width="24" height="24" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="2" y="8" width="32" height="20" rx="2" stroke="currentColor" stroke-width="2"/><path d="M6 18h8M18 18h12M6 14v8M14 14v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="28" cy="12" r="3" fill="currentColor"/></svg>
+            Gaseo S.A.S.
+          </a>
+          <p>Automatización de Procesos de Manufactura</p>
+          <p>Grupo 4 · UNAL 2026-I</p>
+          <div class="footer-social">
+            <a href="https://github.com/santiagofonsecap/APM_Page" target="_blank" rel="noopener" class="footer-social__link" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg></a>
+            <a href="https://drive.google.com/drive/u/2/folders/0AO2oxGaDvYBvUk9PVA" target="_blank" rel="noopener" class="footer-social__link" aria-label="Google Drive"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.71 3.5L1.15 15l3.43 5.93L11.14 9.5 7.71 3.5zm1.14 0l6.86 11.86h6.86L15.71 3.5H8.86zM2.29 16l3.43 5.93h13.71L22.86 16H2.29z"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col__heading">Módulos</h4>
+          <ul class="footer-col__links">
+            <li><a href="introduccion.html">Introducción</a></li>
+            <li><a href="produccion.html">Producción</a></li>
+            <li><a href="planeacion.html">Planeación</a></li>
+            <li><a href="robotica.html">Robótica</a></li>
+            <li><a href="digital-factory.html">Digital Factory</a></li>
+            <li><a href="control.html">Control (PLC)</a></li>
+            <li><a href="scada.html">SCADA</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col__heading">Proyecto</h4>
+          <ul class="footer-col__links">
+            <li><a href="../evaluacion.html">Inversión</a></li>
+            <li><a href="../propuesta.html">Propuesta Técnica</a></li>
+            <li><a href="../asignatura.html">Asignatura</a></li>
+            <li><a href="../reflexiones.html">Reflexiones</a></li>
+            <li><a href="../contacto.html">Contáctenos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col__heading">Legal</h4>
+          <ul class="footer-col__links">
+            <li><a href="../privacidad.html">Política de Privacidad</a></li>
+            <li><a href="../terminos.html">Términos de Servicio</a></li>
+            <li><a href="../cookies.html">Política de Cookies</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Gaseo S.A.S. · Grupo 4 APM · Dpto. Ing. Mecánica y Mecatrónica · Universidad Nacional de Colombia</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Celdas Robotizadas — Gaseo S.A.S. · Selección de robot, EOAT y simulación RobotStudio. Planta embotelladora de referencia · Bogotá.">
+  <title>Celdas Robotizadas · Gaseo S.A.S.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="module-page">
+  <header class="site-header" id="top">
+    <nav class="nav" aria-label="Principal">
+      <a href="../index.html#inicio" class="nav__brand" aria-label="Gaseo S.A.S. — Inicio">
+        <svg class="nav__logo-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="2" y="8" width="32" height="20" rx="2" stroke="currentColor" stroke-width="2"/>
+          <path d="M6 18h8M18 18h12M6 14v8M14 14v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="28" cy="12" r="3" fill="currentColor"/>
+        </svg>
+        <span class="nav__logo-text">Gaseo S.A.S.</span>
+      </a>
+      <button type="button" class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" id="nav-toggle">
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="visually-hidden">Abrir menú</span>
+      </button>
+      <ul class="nav__list" id="nav-menu">
+        <li><a href="../index.html" class="nav__link">Inicio</a></li>
+        <li><a href="../evaluacion.html" class="nav__link">Inversión</a></li>
+        <li><a href="../propuesta.html" class="nav__link">Propuesta</a></li>
+        <li class="nav__item nav__dropdown" data-nav-dropdown>
+          <button type="button" class="nav__dropdown-toggle" id="nav-modules-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="nav-modules-menu">
+            Módulos <span class="nav__dropdown-caret" aria-hidden="true">▾</span>
+          </button>
+          <ul class="nav__dropdown-menu" id="nav-modules-menu" role="menu">
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="introduccion.html">Introducción</a></li>
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="produccion.html">Producción</a></li>
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="planeacion.html">Planeación</a></li>
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="robotica.html" aria-current="page">Robótica</a></li>
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="digital-factory.html">Digital Factory</a></li>
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="control.html">Control (PLC)</a></li>
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="scada.html">SCADA</a></li>
+            <li role="separator" class="nav__dropdown-separator" aria-hidden="true"></li>
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="../asignatura.html">Asignatura</a></li>
+            <li role="none"><a role="menuitem" class="nav__link nav__link--sub" href="../reflexiones.html">Reflexiones</a></li>
+          </ul>
+        </li>
+        <li><a href="../contacto.html" class="nav__link">Contáctenos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="module-main">
+    <section class="hero hero--compact" aria-labelledby="mod-title">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="container hero__content hero__content--compact">
+        <p class="hero__eyebrow">Módulo evaluativo · APM 2026-I</p>
+        <h1 class="hero__title" id="mod-title">Celdas Robotizadas</h1>
+        <p class="hero__subtitle">Prof. Ricardo Ramirez H.</p>
+        <p class="hero__tagline">Justificación técnica-económica de la robotización en el empaque/paletizado, selección de manipulador y herramienta terminal, diseño de layout de celda, simulación offline en RobotStudio y análisis preliminar de seguridad (ISO 10218 / paros, cercos, reducción de riesgo).</p>
+      </div>
+    </section>
+
+    <article class="module-content">
+      <div class="container">
+        <p class="module-content__intro">El fin de línea de las dos líneas se resuelve con una <strong>única celda central de paletizado</strong> servida por un robot <strong>ABB IRB 660</strong>, que paletiza en paralelo las canastas de gaseosa y los garrafones, alternando entre dos posiciones de pallet. Esta sección documenta la justificación, la selección del robot y su herramienta, el balance de ciclos y la seguridad de la celda.</p>
+
+        <section class="module-section" id="justificacion" aria-labelledby="sec-why">
+          <h2 class="module-section__title" id="sec-why">Justificación de la celda</h2>
+          <hr class="module-section__divider" aria-hidden="true">
+          <p class="module-section__lead">En el diseño actual el paletizado de ambas líneas se ejecutaría de forma manual. Una canasta llena de 24 botellas pesa ≈ 20,7 kg y un garrafón lleno ≈ 21 kg; la línea de gaseosa entrega ≈ 833 canastas/h (≈ 17,2 t/h) y la de garrafones 900 u/h (≈ 18,9 t/h). Estas cargas y frecuencias superan ampliamente los límites recomendados de manipulación manual (ecuación NIOSH): un operario no podría sostener el ritmo sin riesgo dorsolumbar. El paletizado manual es el <strong>principal cuello de botella y riesgo</strong> del diseño actual.</p>
+          <div class="module-stats reveal">
+            <div class="stat-card stat-card--dark">
+              <span class="stat-card__value">~36 t/h</span>
+              <span class="stat-card__label">Carga manipulada en paletizado (AS-IS, ambas líneas)</span>
+            </div>
+            <div class="stat-card stat-card--dark">
+              <span class="stat-card__value">20–21 kg</span>
+              <span class="stat-card__label">Peso por unidad de empaque (canasta / garrafón)</span>
+            </div>
+            <div class="stat-card stat-card--dark">
+              <span class="stat-card__value">4 → 2</span>
+              <span class="stat-card__label">Operarios/turno de fin de línea (AS-IS → TO-BE)</span>
+            </div>
+          </div>
+          <div class="module-note reveal">Una celda central compartida —un solo robot para las dos líneas— reduce costos frente a instalar múltiples robots, disminuye la dependencia manual y da continuidad al flujo hasta el pallet.</div>
+        </section>
+
+        <section class="module-section module-section--alt" id="seleccion" aria-labelledby="sec-robot">
+          <h2 class="module-section__title" id="sec-robot">Selección de robot y herramienta (EOAT)</h2>
+          <hr class="module-section__divider" aria-hidden="true">
+          <p class="module-section__lead">El <strong>ABB IRB 660</strong> es un robot paletizador dedicado de 4 ejes, con alcance suficiente para atender ambas líneas desde una posición central. Su capacidad de carga deja amplio margen frente al pick más pesado.</p>
+          <div class="table-wrap reveal">
+            <table class="data-table">
+              <caption class="visually-hidden">Características del robot ABB IRB 660</caption>
+              <thead>
+                <tr><th scope="col">Característica</th><th scope="col">Valor</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Tipo</td><td>Robot paletizador dedicado</td></tr>
+                <tr><td>Ejes</td><td>4</td></tr>
+                <tr><td>Alcance</td><td>3,15 m</td></tr>
+                <tr><td>Capacidad de carga</td><td>250 kg</td></tr>
+                <tr><td>Estaciones que atiende</td><td>Hasta 4 transportadores de entrada, 2 posiciones de pallet y 1 estación de hojas separadoras</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="reveal"><strong>Herramienta terminal (EOAT).</strong> Un gripper multiproducto de 4 posiciones (masa estimada ≈ 40 kg) que toma <strong>2 unidades por ciclo</strong> (2 canastas o 2 garrafones, según la trayectoria).</p>
+          <div class="module-note reveal">
+            <strong>Verificación de carga:</strong> el pick más pesado (≈ 42 kg = 2 garrafones × 21 kg) más el gripper (≈ 40 kg) totaliza ≈ <strong>82 kg</strong>, muy por debajo de la capacidad de 250 kg del robot.
+          </div>
+        </section>
+
+        <section class="module-section" id="balance" aria-labelledby="sec-balance">
+          <h2 class="module-section__title" id="sec-balance">Balance de ciclos de la celda</h2>
+          <hr class="module-section__divider" aria-hidden="true">
+          <p class="module-section__lead">El dimensionamiento parte de las demandas horarias de ambas líneas y de un gripper que toma 2 unidades por ciclo. La demanda conjunta representa una utilización del <strong>96 %</strong> de la capacidad estimada del robot, dejando margen para cambios de pallet, hojas separadoras y microparadas.</p>
+          <div class="table-wrap reveal">
+            <table class="data-table">
+              <caption class="visually-hidden">Balance de ciclos de la celda de paletizado con ABB IRB 660</caption>
+              <thead>
+                <tr><th scope="col">Paso</th><th scope="col">Cálculo</th><th scope="col">Resultado</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Flujo de canastas (L1)</td><td>20 000 bot/h ÷ 24 bot/canasta</td><td>833,3 canastas/h</td></tr>
+                <tr><td>Ciclos línea gaseosa</td><td>833,3 ÷ 2 canastas/ciclo</td><td>416,6 ciclos/h</td></tr>
+                <tr><td>Flujo de garrafones (L2)</td><td>Demanda de la línea</td><td>900 garrafones/h</td></tr>
+                <tr><td>Ciclos línea garrafón</td><td>900 ÷ 2 garrafones/ciclo</td><td>450,0 ciclos/h</td></tr>
+                <tr><td>Ciclos totales requeridos</td><td>416,6 + 450,0</td><td>866,3 ciclos/h (14,4/min)</td></tr>
+                <tr><td>Tiempo disponible por ciclo</td><td>3 600 s ÷ 866,3</td><td>4,16 s/ciclo</td></tr>
+                <tr><td>Ciclo estimado del IRB 660</td><td>Pick de 2 uds, traslado ≤ 3,15 m, place y retorno</td><td>4,0 s/ciclo → 900 ciclos/h</td></tr>
+                <tr class="data-table__highlight"><td>Utilización del robot</td><td>866,3 ÷ 900</td><td>96,25 %</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="module-section module-section--alt" id="layout" aria-labelledby="sec-layout">
+          <h2 class="module-section__title" id="sec-layout">Layout de celda y conformación de pallets</h2>
+          <hr class="module-section__divider" aria-hidden="true">
+          <p class="module-section__lead">La celda se ubica al final de ambas líneas. El robot atiende de forma alternada dos transportadores de entrada (canastas y garrafones) y dos posiciones de pallet —una por producto—, con evacuación automática del pallet completo por transportadores de rodillos y un dispensador de estibas y hojas separadoras dentro de la celda.</p>
+          <div class="table-wrap reveal">
+            <table class="data-table">
+              <caption class="visually-hidden">Patrones de conformación de pallets por línea</caption>
+              <thead>
+                <tr><th scope="col">Línea</th><th scope="col">Patrón</th><th scope="col">Unidades/pallet</th><th scope="col">Masa aprox.</th><th scope="col">Pallets/h</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Gaseosa 400 mL</td><td>12 canastas/capa × 2 capas</td><td>24 canastas</td><td>≈ 497 kg</td><td>≈ 34,7</td></tr>
+                <tr><td>Garrafón 20 L</td><td>20 garrafones/capa × 1 capa (hojas separadoras)</td><td>20 garrafones</td><td>≈ 420 kg</td><td>≈ 45,0</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <figure class="reveal" style="margin:1rem 0 1.5rem;text-align:center">
+            <img src="../img/diagramas/layout-celda-paletizado-irb660.png" alt="Esquema en vista de planta de la celda de paletizado ABB IRB 660: canastillas con conveyor y estiba al costado izquierdo (24/pallet), garrafones con conveyor y estiba al costado derecho (20/pallet), robot IRB 660 (4 ejes, 250 kg) al centro, y cerramiento de seguridad perimetral ISO 10218 con puertas enclavadas." width="1854" height="1907" loading="lazy" style="max-width:100%;height:auto;border-radius:8px">
+            <figcaption style="font-size:0.82rem;color:var(--text-muted);margin-top:0.5rem">Esquema de planta de la celda central de paletizado — robot ABB IRB 660 con demanda conjunta de 417 + 450 ≈ 867 ciclos/h (≤ 4,15 s/ciclo).</figcaption>
+          </figure>
+        </section>
+
+        <section class="module-section" id="robotstudio" aria-labelledby="sec-rs">
+          <h2 class="module-section__title" id="sec-rs">Simulación en RobotStudio</h2>
+          <hr class="module-section__divider" aria-hidden="true">
+          <p class="module-section__lead">La estación virtual en RobotStudio validará trayectorias, tiempos de ciclo y detección de interferencias frente al balance teórico (4,0 s/ciclo, 96 % de utilización), con exportación de evidencias (capturas, video y lista de tiempos).</p>
+          <figure class="reveal" style="margin:1rem 0 1.5rem;text-align:center">
+            <img src="../img/diagramas/celda-robotstudio.png" alt="Simulación de la celda en RobotStudio (DTPalletizer): robot ABB IRB 660 paletizando garrafones desde el transportador de entrada hacia una tarima, con las trayectorias de la herramienta (TCP) trazadas en amarillo durante el ciclo de paletizado." width="1170" height="732" loading="lazy" style="max-width:100%;height:auto;border-radius:8px;border:1px solid var(--border-color, #ddd)">
+            <figcaption style="font-size:0.82rem;color:var(--text-muted);margin-top:0.5rem">Estación virtual en RobotStudio — trayectorias de paletizado del IRB 660 (proyecto DTPalletizer).</figcaption>
+          </figure>
+          <p class="module-caption reveal"><small>La seguridad de la celda se evaluó conforme a ISO 14121-1 (ver más abajo) y el alcance del robot se tuvo en cuenta en el diseño del layout. La verificación detallada de alcance, trayectorias y tiempos de ciclo en RobotStudio se contempló y queda planificada como <strong>trabajo futuro</strong>; no forma parte del alcance actual del proyecto.</small></p>
+          <div class="video-grid reveal">
+            <div class="video-card video-card--embed">
+              <div class="video-card__poster">
+                <iframe
+                  src="https://www.youtube.com/embed/ag1OwzX-oXo?rel=0"
+                  title="Validación de la simulación en RobotStudio — celda de paletizado IRB 660"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                  loading="lazy"
+                  referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              </div>
+              <div class="video-card__info">
+                <h4 class="video-card__name">Simulación en RobotStudio</h4>
+                <p class="video-card__meta">Validación del ciclo de paletizado del IRB 660 · YouTube · 2026</p>
+                <p style="margin:0.5rem 0 0;font-size:0.82rem"><a href="https://www.youtube.com/watch?v=ag1OwzX-oXo" target="_blank" rel="noopener" style="color:var(--primary);font-weight:600">Abrir en YouTube →</a></p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="module-section module-section--alt" id="seguridad" aria-labelledby="sec-safe">
+          <h2 class="module-section__title" id="sec-safe">Seguridad funcional y dispositivos</h2>
+          <hr class="module-section__divider" aria-hidden="true">
+          <p class="module-section__lead">La celda se diseña bajo la norma <strong>ISO 10218</strong> (robots industriales, tipo C), con protección perimetral y enclavamientos con el resto de la línea. La cadena de seguridad —puerta enclavada, cortinas ópticas y paros de emergencia— se cablea sobre relés o PLC de seguridad con un piso general de <strong>PL d / Categoría 3</strong> (ISO 13849-1) y <strong>PL e</strong> para las funciones que impiden el acceso a la envolvente con el robot en automático.</p>
+          <ul class="module-list reveal">
+            <li>Cerramiento perimetral fijo (≥ 1 800 mm, ISO 14120) con acceso de personal por una única puerta con enclavamiento y bloqueo de resguardo (ISO 14119) y dispositivo anti-encierro.</li>
+            <li>Cortinas ópticas con <em>muting</em> automático en las dos posiciones de tarima y en los túneles de los transportadores; distancia mínima según ISO 13855 (<em>S = K·T + C</em>, K = 1 600 mm/s).</li>
+            <li>Paros de emergencia (ISO 13850) en la puerta, el pupitre del operador y el FlexPendant; modo manual limitado a velocidad reducida (≤ 250 mm/s) con dispositivo de validación de tres posiciones.</li>
+            <li>Espacio restringido por software (World Zones del IRC5 / SafeMove) que recorta la envolvente de R 3 150 mm a los sectores robot–transportadores–tarimas efectivamente usados.</li>
+          </ul>
+          <div class="module-note reveal">
+            <strong>Independencia de la seguridad (ISO 14121-1, 7.3.6):</strong> ninguna función de seguridad depende del <em>handshake</em> OPC UA, del gateway de Ignition ni de las variables PERS del programa RAPID. Esas rutas son de proceso, no de seguridad, y la cadena de seguridad permanece físicamente separada del controlador Logix estándar.
+          </div>
+        </section>
+
+        <section class="module-section" id="riesgos" aria-labelledby="sec-risk">
+          <h2 class="module-section__title" id="sec-risk">Evaluación del riesgo (ISO 14121-1)</h2>
+          <hr class="module-section__divider" aria-hidden="true">
+          <p class="module-section__lead">Se evaluó el riesgo de la celda de paletizado dual sobre el <strong>layout existente</strong> (sin rediseño físico) conforme a la <strong>UNE-EN ISO 14121-1</strong>. La estimación usa el grafo de riesgos de ISO 13849-1 (parámetros <strong>S</strong>, <strong>F</strong> y <strong>P</strong>), que traduce cada situación peligrosa en un nivel de prestaciones requerido (PLr) y en un nivel de riesgo cualitativo. Se identificaron <strong>9 situaciones peligrosas</strong> (P-01 a P-09) y un programa de <strong>13 medidas</strong> (M-01 a M-13) por el método de los tres pasos.</p>
+
+          <h3 class="module-subheading">Criterios de estimación (S · F · P)</h3>
+          <div class="table-wrap reveal">
+            <table class="data-table">
+              <caption class="visually-hidden">Parámetros de estimación del riesgo según ISO 13849-1</caption>
+              <thead>
+                <tr><th scope="col">Parámetro</th><th scope="col">Nivel</th><th scope="col">Criterio adoptado</th></tr>
+              </thead>
+              <tbody>
+                <tr><td rowspan="2">Gravedad (S)</td><td>S1</td><td>Lesión leve, normalmente reversible (contusión, corte superficial).</td></tr>
+                <tr><td>S2</td><td>Lesión seria irreversible o muerte (aplastamiento, impacto por brazo cargado, choque eléctrico).</td></tr>
+                <tr><td rowspan="2">Frecuencia / duración (F)</td><td>F1</td><td>Exposición poco frecuente y/o de corta duración (mantenimiento programado).</td></tr>
+                <tr><td>F2</td><td>Exposición frecuente a continua y/o de larga duración (cambio de tarima, desatascos, teach).</td></tr>
+                <tr><td rowspan="2">Evitabilidad (P)</td><td>P1</td><td>Posible en ciertas condiciones (movimiento perceptible, velocidad reducida, procedimiento aplicable).</td></tr>
+                <tr><td>P2</td><td>Apenas posible: suceso súbito, sin advertencia (velocidad de proceso, arranque intempestivo).</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 class="module-subheading">Correspondencia estimación → PLr → nivel de riesgo</h3>
+          <div class="table-wrap reveal">
+            <table class="data-table">
+              <caption class="visually-hidden">Correspondencia entre la estimación S-F-P, el PLr y el nivel de riesgo</caption>
+              <thead>
+                <tr><th scope="col">Combinación S–F–P</th><th scope="col">PLr</th><th scope="col">Nivel de riesgo</th><th scope="col">Decisión (cap. 8)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>S1–F1–P1 / S1–F1–P2</td><td>a – b</td><td>Bajo</td><td>Aceptable; solo información de uso.</td></tr>
+                <tr><td>S1–F2–Px / S2–F1–P1</td><td>b – c</td><td>Medio</td><td>Requiere medidas; iterar.</td></tr>
+                <tr><td>S2–F1–P2 / S2–F2–P1</td><td>d</td><td>Medio-Alto</td><td>Requiere protección y control PL d.</td></tr>
+                <tr class="data-table__highlight"><td>S2–F2–P2</td><td>e</td><td>Alto</td><td>Reducción obligatoria antes de la puesta en servicio.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 class="module-subheading">Matriz de riesgo (inicial y residual)</h3>
+          <div class="table-wrap reveal">
+            <table class="data-table">
+              <caption class="visually-hidden">Matriz de evaluación del riesgo de la celda: situación, peligro, estimación S-F-P, riesgo inicial, medidas y riesgo residual</caption>
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Situación peligrosa (tarea / zona)</th>
+                  <th scope="col">Peligro</th>
+                  <th scope="col">S</th><th scope="col">F</th><th scope="col">P</th>
+                  <th scope="col">Riesgo inicial (PLr)</th>
+                  <th scope="col">Medidas</th>
+                  <th scope="col">Riesgo residual</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>P-01</td><td>Reacomodo manual de garrafón/canasta con la celda en automático (mal uso previsible) — interior de la envolvente R 3 150 mm</td><td>Mecánico: elementos móviles del robot → impacto y aplastamiento</td><td>S2</td><td>F2</td><td>P2</td><td>Alto (PLr e)</td><td>M-01, M-02, M-03, M-04, M-06, M-09, M-11</td><td>Bajo</td></tr>
+                <tr><td>P-02</td><td>Retiro/reposición de tarima (montacarguista, operador) — posiciones de tarima y periferia</td><td>Mecánico: aplastamiento entre brazo/carga y tarima o estructura</td><td>S2</td><td>F2</td><td>P2</td><td>Alto (PLr e)</td><td>M-02, M-03, M-05, M-06, M-09, M-10, M-11</td><td>Bajo-Medio</td></tr>
+                <tr><td>P-03</td><td>Operación automática: transferencia robot → tarima con producto sujetado — trayectoria sobre transportadores</td><td>Mecánico: caída de objetos (garrafón ≈ 22 kg desde 1,5–2 m)</td><td>S2</td><td>F1</td><td>P1</td><td>Medio (PLr c)</td><td>M-07, M-08, M-11, M-12</td><td>Bajo</td></tr>
+                <tr><td>P-04</td><td>Desatasco en los extremos de picking de los transportadores — X = 1 000; Y = ±1 800 y túneles</td><td>Mecánico: atrapamiento en rodillos; alcance del robot</td><td>S2</td><td>F2</td><td>P1</td><td>Medio-Alto (PLr d)</td><td>M-03, M-04, M-06, M-11, M-12</td><td>Bajo</td></tr>
+                <tr><td>P-05</td><td>Programación / teach y verificación de trayectorias — interior de la envolvente</td><td>Mecánico: movimiento no esperado del robot durante el aprendizaje</td><td>S2</td><td>F2</td><td>P1</td><td>Medio-Alto (PLr d)</td><td>M-08, M-09, M-11, M-12</td><td>Bajo-Medio</td></tr>
+                <tr><td>P-06</td><td>Puesta en marcha intempestiva por escritura desde el proceso (PLC/OPC UA) — toda la celda</td><td>Sistemas programables (7.3.6): arranque inesperado / neutralización</td><td>S2</td><td>F1</td><td>P2</td><td>Alto (PLr d)</td><td>M-06, M-07, M-08, M-11</td><td>Bajo</td></tr>
+                <tr><td>P-07</td><td>Mantenimiento eléctrico: armario, IRC5 y canalizaciones — armario eléctrico y periferia</td><td>Eléctrico: contacto con partes activas → choque, quemadura</td><td>S2</td><td>F1</td><td>P1</td><td>Medio (PLr c)</td><td>M-11, M-12, M-13</td><td>Bajo</td></tr>
+                <tr><td>P-08</td><td>Operación automática en la esquina lejana del patrón 4×3 de canastas (≈ 3,35 m &gt; 3,15 m nominal) — tarima de canastas</td><td>Mecánico: colisión del brazo, proyección/caída de la canasta de vidrio</td><td>S2</td><td>F1</td><td>P1</td><td>Medio (PLr c)</td><td>M-01, M-07, M-12</td><td>Bajo-Medio</td></tr>
+                <tr><td>P-09</td><td>Cambio o mantenimiento del efector final (pinza/ventosas) — brida del robot</td><td>Mecánico: caída del efector/carga por pérdida de energía (vacío/aire)</td><td>S2</td><td>F1</td><td>P1</td><td>Medio (PLr c)</td><td>M-11, M-12, M-13</td><td>Bajo</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="module-caption reveal"><small>S = gravedad · F = frecuencia y duración de la exposición · P = posibilidad de evitar el daño · PLr = nivel de prestaciones requerido (ISO 13849-1). Los niveles residuales suponen la implantación completa y verificada de las medidas.</small></p>
+
+          <h3 class="module-subheading">Programa de medidas — método de los tres pasos (M-01 a M-13)</h3>
+          <div class="table-wrap reveal">
+            <table class="data-table">
+              <caption class="visually-hidden">Programa de medidas de reducción del riesgo por el método de los tres pasos</caption>
+              <thead>
+                <tr><th scope="col">ID</th><th scope="col">Paso</th><th scope="col">Medida de reducción del riesgo</th><th scope="col">Norma</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>M-01</td><td>a) Diseño</td><td>Espacio restringido por software (World Zones del IRC5 / SafeMove) que recorta la envolvente a los sectores usados. No modifica el layout.</td><td>ISO 10218-1; 13849-1</td></tr>
+                <tr><td>M-02</td><td>a) Diseño</td><td>Elevación de los extremos de picking y cierre de los laterales del transportador en el tramo interior (sin alcance manual sobre la banda dentro de la celda).</td><td>ISO 13857</td></tr>
+                <tr><td>M-03</td><td>b) Protección</td><td>Vallado perimetral fijo ≥ 1 800 mm alrededor del layout (perímetro ≈ 8 × 8 m centrado en el robot, con pasillo interior de mantenimiento).</td><td>ISO 14120; 13857</td></tr>
+                <tr><td>M-04</td><td>b) Protección</td><td>Túneles de paso de los transportadores dimensionados según ISO 13857; si la geometría obliga a mayor abertura, cortina fotoeléctrica con muting.</td><td>ISO 13857; IEC 61496; ISO 13855</td></tr>
+                <tr><td>M-05</td><td>b) Protección</td><td>Puertas de material en las dos posiciones de tarima con cortinas ópticas y muting automático; distancia mínima S = K·T + C (K = 1 600 mm/s).</td><td>ISO 13855; IEC 61496</td></tr>
+                <tr><td>M-06</td><td>b) Protección</td><td>Puerta única de acceso de personal con enclavamiento y bloqueo de resguardo, con dispositivo anti-encierro (solicitud de acceso / llave atrapada).</td><td>ISO 14119; 10218-2</td></tr>
+                <tr><td>M-07</td><td>b) Protección</td><td>Cadena de seguridad cableada sobre relés/PLC de seguridad, separada del Logix estándar, del OPC UA y de Ignition. Ninguna función depende del handshake de proceso.</td><td>ISO 13849-1 (PL d/Cat. 3 mín., PL e para acceso a envolvente); 14121-1 §7.3.6</td></tr>
+                <tr><td>M-08</td><td>b) Protección</td><td>Paradas de emergencia en la puerta, el pupitre del operador y el FlexPendant, con categoría de parada acorde.</td><td>ISO 13850; IEC 60204-1</td></tr>
+                <tr><td>M-09</td><td>b) Protección</td><td>Modo manual limitado a velocidad reducida (≤ 250 mm/s) con dispositivo de validación de tres posiciones.</td><td>ISO 10218-1</td></tr>
+                <tr><td>M-10</td><td>b) Protección</td><td>Delimitación en piso y barrera física de la ruta del montacargas (retiro de tarimas siempre desde el exterior del vallado).</td><td>ISO 3691-4 (ref.)</td></tr>
+                <tr><td>M-11</td><td>c) Información</td><td>Señalización de zona robotizada, carga suspendida y riesgo eléctrico; baliza luminosa física comandada desde el PLC (el Andon de Perspective es informativo).</td><td>ISO 7010; IEC 60204-1</td></tr>
+                <tr><td>M-12</td><td>c) Información</td><td>Procedimientos y formación diferenciada (operador/técnico/montacarguista): retiro de tarimas, desatasco en paro seguro, verificación de alcance en RobotStudio.</td><td>ISO 14121-1 §8.2.1 c); 12100</td></tr>
+                <tr><td>M-13</td><td>c) Información</td><td>Consignación de energías (LOTO), incluida la purga del circuito neumático/de vacío del efector, antes de cualquier mantenimiento.</td><td>IEC 60204-1; ISO 14118</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="module-grid reveal">
+            <div>
+              <h3 class="module-subheading">Riesgos residuales declarados</h3>
+              <ul class="module-list">
+                <li>Exposición durante la ventana de <em>muting</em> en la salida de la tarima llena (P-02) — riesgo residual principal.</li>
+                <li>Trabajo dentro de la envolvente en modo manual a velocidad reducida durante la programación (P-05).</li>
+                <li>Alcance límite en la esquina lejana del patrón de canastas (P-08) — verificación de alcance considerada y prevista como trabajo futuro (A-01).</li>
+                <li>Manipulación manual de cargas durante el cambio del efector final (P-09).</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="module-subheading">Acciones consideradas · trabajo futuro</h3>
+              <p class="module-section__lead" style="margin-bottom:0.75rem">Estas acciones de cierre se tuvieron en cuenta en la evaluación del riesgo y quedan planificadas como trabajo futuro; no se contemplan más verificaciones de seguridad en RobotStudio dentro del alcance actual del proyecto.</p>
+              <ul class="module-list">
+                <li><strong>A-01:</strong> verificación de alcance de la esquina lejana del patrón 4×3 de canastas (≈ 3,35 m) en RobotStudio. Considerada en el análisis; de confirmarse inalcanzable, se corregiría el patrón de estiba o el offset de la tarima. Prevista como trabajo futuro.</li>
+                <li><strong>A-02:</strong> cálculo del PL alcanzado de cada función de seguridad (MTTFd, DC, CCF) y documentación de la validación conforme a ISO 13849-2.</li>
+                <li><strong>A-03:</strong> cálculo del tiempo de respuesta total del sistema (T) para dimensionar las distancias de las cortinas con ISO 13855.</li>
+              </ul>
+            </div>
+          </div>
+          <p class="module-caption reveal"><small>Fuente: Informe de Evaluación del Riesgo — celda robotizada de paletizado dual (UNE-EN ISO 14121-1), rev. 01, 14 de julio de 2026. Normas complementarias: ISO 12100, 10218-1/-2, 13849-1/-2, 13850, 13855, 13857, 13854, 14119, 14120, 14118, IEC 61496 e IEC 60204-1.</small></p>
+        </section>
+
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="../index.html" class="footer-col__brand">
+            <svg width="24" height="24" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="2" y="8" width="32" height="20" rx="2" stroke="currentColor" stroke-width="2"/><path d="M6 18h8M18 18h12M6 14v8M14 14v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="28" cy="12" r="3" fill="currentColor"/></svg>
+            Gaseo S.A.S.
+          </a>
+          <p>Automatización de Procesos de Manufactura</p>
+          <p>Grupo 4 · UNAL 2026-I</p>
+          <div class="footer-social">
+            <a href="https://github.com/santiagofonsecap/APM_Page" target="_blank" rel="noopener" class="footer-social__link" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg></a>
+            <a href="https://drive.google.com/drive/u/2/folders/0AO2oxGaDvYBvUk9PVA" target="_blank" rel="noopener" class="footer-social__link" aria-label="Google Drive"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.71 3.5L1.15 15l3.43 5.93L11.14 9.5 7.71 3.5zm1.14 0l6.86 11.86h6.86L15.71 3.5H8.86zM2.29 16l3.43 5.93h13.71L22.86 16H2.29z"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col__heading">Módulos</h4>
+          <ul class="footer-col__links">
+            <li><a href="introduccion.html">Introducción</a></li>
+            <li><a href="produccion.html">Producción</a></li>
+            <li><a href="planeacion.html">Planeación</a></li>
+            <li><a href="robotica.html">Robótica</a></li>
+            <li><a href="digital-factory.html">Digital Factory</a></li>
+            <li><a href="control.html">Control (PLC)</a></li>
+            <li><a href="scada.html">SCADA</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col__heading">Proyecto</h4>
+          <ul class="footer-col__links">
+            <li><a href="../evaluacion.html">Inversión</a></li>
+            <li><a href="../propuesta.html">Propuesta Técnica</a></li>
+            <li><a href="../asignatura.html">Asignatura</a></li>
+            <li><a href="../reflexiones.html">Reflexiones</a></li>
+            <li><a href="../contacto.html">Contáctenos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col__heading">Legal</h4>
+          <ul class="footer-col__links">
+            <li><a href="../privacidad.html">Política de Privacidad</a></li>
+            <li><a href="../terminos.html">Términos de Servicio</a></li>
+            <li><a href="../cookies.html">Política de Cookies</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Gaseo S.A.S. · Grupo 4 APM · Dpto. Ing. Mecánica y Mecatrónica · Universidad Nacional de Colombia</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
