@@ -10,7 +10,7 @@
 
 *Del diagnóstico en planta al gemelo digital: ingeniería de automatización aplicada al sector bebidas.*
 
-[Explorar el sitio](https://santiagofonsecap.github.io/APM_Page/) · [Ver el código](https://github.com/SantiagoFonsecap/APM_Page)
+[Explorar el sitio](https://sergiosinlimites.github.io/apm/) · [Ver el código](https://github.com/sergiosinlimites/apm)
 
 </div>
 
@@ -26,22 +26,21 @@
 
 | | |
 |:---|:---|
-| **OEE actual estimado** | ~75% |
-| **OEE objetivo** | 95%+ |
+| **OEE AS-IS (gaseosa / garrafón)** | 71,4% / 73,4% |
+| **Operarios de fin de línea** | de 4 a 2 por turno |
 
-Reducir las pérdidas de disponibilidad, velocidad y calidad a lo largo de toda la cadena de valor mediante simulación de eventos discretos, celdas robotizadas, gemelo digital y HMI bajo estándares industriales (ISA-95, ISA-101).
+Las líneas de envasado ya están automatizadas; el reto está en el **fin de línea manual** (tapado de garrafones cada 4 s y paletizado de cargas de 20–21 kg, ~36 t/h combinadas), ergonómicamente inviable. Se resuelve con dos mejoras —actuador neumático de tapado y celda robotizada de paletizado **ABB IRB 660**— y digitalización del flujo de información con SCADA en Ignition, validadas por simulación (Tecnomatix Plant Simulation) y gemelo digital.
 
 ---
 
 ## Portafolio de productos · 📦
 
-Tres productos diferenciados por envase, formato y velocidad de línea:
+Dos líneas de producción diferenciadas por envase, formato y velocidad de línea:
 
-| # | Producto | Envase | Velocidad de referencia |
+| # | Línea | Envase | Velocidad de referencia |
 |---|----------|--------|------------------------|
-| 1 | Gaseosa carbonatada 400 ml | Vidrio retornable | 20 000 bot/h |
-| 2 | Bebida energética 473 ml | Lata de aluminio | 30 000 latas/h |
-| 3 | Agua purificada 1 L | PET no retornable | 15 000 bot/h |
+| 1 | Gaseosa cola 400 ml (canastas × 24) | Vidrio retornable | 20 000 bot/h |
+| 2 | Garrafón de agua 20 L | Retornable | 900 gar/h |
 
 ---
 
@@ -72,7 +71,7 @@ Cada bloque aporta una pieza del rompecabezas: teoría, producción, planeación
 
 ## Dónde estamos · 📍
 
-**Ya consolidado** — Línea base del estado actual (levantamiento, diagramas, indicadores y mapa de flujo de valor), portafolio de tres productos, sitio web multipágina con propuesta y narrativa de inversión, simulación de eventos discretos (modelo AS-IS), cronograma con ruta crítica reprogramada y una base de documentación lista para escalar el diseño futuro.
+**Ya consolidado** — Línea base del estado actual (levantamiento, diagramas, indicadores y mapa de flujo de valor), portafolio de dos líneas de producción, sitio web multipágina con propuesta y narrativa de inversión, simulación de eventos discretos (modelo AS-IS), cronograma con ruta crítica reprogramada y una base de documentación lista para escalar el diseño futuro.
 
 **En construcción** — Diseño del estado futuro (Lean, VSM objetivo, estrategia multiproducto), arquitectura ISA-95 y red industrial, celda robotizada, lógica PLC, gemelo digital, SCADA en Ignition, cierre de evaluación económica y sustentación final (mayo 2026).
 
@@ -119,7 +118,7 @@ La carpeta `website/` concentra la experiencia pública: landing tipo *pitch*, p
 | Despliegue | GitHub Pages + GitHub Actions |
 | Scripts | Python 3 (p. ej. openpyxl) |
 | Sincronización de datos con Google Drive | rclone + bash |
-| Colaboración | Jira Cloud, Cursor IDE |
+| Colaboración | Cursor IDE |
 
 **Paleta visual del proyecto**
 

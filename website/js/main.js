@@ -1,5 +1,5 @@
 /**
- * FluxLine — Navegación, menú móvil, dropdown Módulos, revelado al scroll y medidores OEE.
+ * Gaseo S.A.S. — Navegación, menú móvil, dropdown Módulos, revelado al scroll y medidores OEE.
  */
 (function () {
   "use strict";

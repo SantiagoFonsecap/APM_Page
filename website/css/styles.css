@@ -1,4 +1,4 @@
-/* FluxLine — Estilos principales (sin frameworks) */
+/* Gaseo S.A.S. — Estilos principales (sin frameworks) */
 
 :root {
   --primary: #A8201A;
@@ -692,6 +692,20 @@ a:hover {
   color: var(--text-muted);
   max-width: 800px;
   line-height: 1.55;
+}
+
+.module-subheading {
+  margin: 1.75rem 0 0.75rem;
+  font-family: var(--font-display, inherit);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-strong, inherit);
+}
+
+.module-caption {
+  margin: 0.4rem 0 1.25rem;
+  color: var(--text-muted);
+  line-height: 1.5;
 }
 
 .module-grid {
@@ -2671,6 +2685,17 @@ section[id] {
 
 .reflection-card__placeholder {
   font-style: italic;
+  color: var(--text-muted);
+}
+
+.reflection-card__body p { margin: 0; }
+.reflection-card__body p + p { margin-top: 0.85rem; }
+
+.reflection-card__byline {
+  display: block;
+  margin-top: 1rem;
+  font-size: 0.82rem;
+  font-weight: 600;
   color: var(--text-muted);
 }
 
