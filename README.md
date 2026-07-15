@@ -4,13 +4,13 @@
 
 ### Automatización integral para una planta embotelladora en Bogotá
 
-[![Curso](https://img.shields.io/badge/APM-2026--1S-1E293B?style=for-the-badge)](https://github.com/sergiosinlimites/apm)
+[![Curso](https://img.shields.io/badge/APM-2026--1S-1E293B?style=for-the-badge)](https://github.com/santiagofonsecap/APM_Page)
 [![Universidad](https://img.shields.io/badge/Universidad_Nacional_de_Colombia-A8201A?style=for-the-badge)](https://unal.edu.co)
-[![Sitio web](https://img.shields.io/badge/GitHub_Pages-Ver_sitio-059669?style=for-the-badge)](https://sergiosinlimites.github.io/apm/)
+[![Sitio web](https://img.shields.io/badge/GitHub_Pages-Ver_sitio-059669?style=for-the-badge)](https://santiagofonsecap.github.io/APM_Page/)
 
 *Del diagnóstico en planta al gemelo digital: ingeniería de automatización aplicada al sector bebidas.*
 
-[Explorar el sitio](https://sergiosinlimites.github.io/apm/) · [Ver el código](https://github.com/sergiosinlimites/apm)
+[Explorar el sitio](https://santiagofonsecap.github.io/APM_Page/) · [Ver el código](https://github.com/santiagofonsecap/APM_Page)
 
 </div>
 
@@ -62,25 +62,25 @@ Cada bloque aporta una pieza del rompecabezas: teoría, producción, planeación
 | **1 · Introducción a la Automatización** | Marco conceptual, Industria 4.0 y niveles de automatización. |
 | **2 · Gestión de Producción** | DOP, DAP, VSM, OEE, Takt Time, cuellos de botella y simulación en Tecnomatix. |
 | **3 · Planeación y Evaluación** | EDT, cronograma, análisis de utilidad y viabilidad económica (CAPEX/OPEX, VPN, TIR, ROI). |
-| **4 · Celdas Robotizadas** | Selección de robot, herramienta terminal, layout, RobotStudio y seguridad. |
-| **5 · Digital Factory** | Modelado 3D, sensores virtuales e integración con emulación de controladores. |
-| **6 · Controladores industriales (PLC)** | Grafcet, Ladder en Studio 5000, interlocks y gestión de recetas. |
-| **7 · SCADA** | ISA-101, diseño HMI, Ignition, tags, alarmas y OPC. |
+| **4 · Celdas Robotizadas** | Selección de robot (ABB IRB 660), herramienta terminal, layout de celda, balance de ciclos, RobotStudio y evaluación de riesgos (ISO 14121-1). |
+| **5 · Digital Factory** | Modelado 3D en Siemens NX (MCD), sensores virtuales, mapeo de señales y arquitectura OPC. |
+| **6 · Controladores industriales (PLC)** | Grafcet, lógica Ladder en Studio 5000 y validación por emulación. |
+| **7 · SCADA** | ISA-101, diseño HMI en Ignition, trazabilidad de pallets y comunicación OPC. |
 
 ---
 
 ## Dónde estamos · 📍
 
-**Ya consolidado** — Línea base del estado actual (levantamiento, diagramas, indicadores y mapa de flujo de valor), portafolio de dos líneas de producción, sitio web multipágina con propuesta y narrativa de inversión, simulación de eventos discretos (modelo AS-IS), cronograma con ruta crítica reprogramada y una base de documentación lista para escalar el diseño futuro.
+**Ya consolidado** — Línea base del estado actual (levantamiento, diagramas, indicadores y mapa de flujo de valor), portafolio de dos líneas, evaluación económica completa (CAPEX, VPN, TIR y payback), celda robotizada ABB IRB 660 con layout, balance de ciclos y evaluación de riesgos ISO 14121-1, lógica de control (Grafcet y Ladder en Studio 5000, validada por emulación), gemelo digital en Siemens NX con mapeo de señales OPC, SCADA en Ignition (HMI y trazabilidad de pallets), pirámide ISA-95 y arquitectura de red, simulación de eventos discretos, cronograma reprogramado y sitio web multipágina.
 
-**En construcción** — Diseño del estado futuro (Lean, VSM objetivo, estrategia multiproducto), arquitectura ISA-95 y red industrial, celda robotizada, lógica PLC, gemelo digital, SCADA en Ignition, cierre de evaluación económica y sustentación final (mayo 2026).
+**En construcción** — VSM del estado futuro, modelo de tags y lista de alarmas del SCADA, resultados finales de validación del gemelo digital, acciones abiertas de seguridad (cálculo del PL alcanzado y distancias de cortinas) y sustentación final (mayo 2026).
 
 ---
 
 ## Estructura del repositorio
 
 ```
-apm/
+APM_Page/
 ├── .cursor/                 # Reglas y skills para el flujo de trabajo en Cursor
 ├── .github/workflows/       # Despliegue continuo a GitHub Pages
 ├── archivos-drive/          # Material sincronizado con el drive del equipo
@@ -92,7 +92,7 @@ apm/
 └── APM.ods                  # Hoja de cálculo del proyecto
 ```
 
-La carpeta `website/` concentra la experiencia pública: landing tipo *pitch*, propuesta técnica, evaluación económica, siete páginas de módulo, contacto, información de la asignatura y páginas legales.
+La carpeta `website/` concentra la experiencia pública: landing tipo *pitch*, propuesta técnica, evaluación económica, siete páginas de módulo, reflexiones del equipo, contacto, información de la asignatura y páginas legales.
 
 ---
 
@@ -103,10 +103,12 @@ La carpeta `website/` concentra la experiencia pública: landing tipo *pitch*, p
 | Área | Herramientas |
 |------|----------------|
 | Simulación | Tecnomatix Plant Simulation |
-| Robótica | RobotStudio (ABB) |
+| Robótica | RobotStudio (ABB) · RAPID |
+| Gemelo digital | Siemens NX — Mechatronics Concept Designer (MCD) |
 | Control | Studio 5000 / RSLogix (Ladder) |
 | Emulación | Logix Emulate |
 | SCADA | Ignition (Inductive Automation) |
+| Comunicaciones | OPC UA / OPC DA (Ignition como pasarela) · Node-RED |
 | Diagramas | draw.io / diagrams.net |
 
 **Repositorio y producto digital**
@@ -164,12 +166,10 @@ pip install -r requirements.txt
 
 | # | Integrante |
 |---|------------|
-| 1 | Dixon Alberto Cuesta Segura |
-| 2 | Juan Angel Vargas Rodriguez |
-| 3 | Juan Esteban Otavo García |
-| 4 | Santiago Camilo Fonseca Prieto |
-| 5 | Sergio Andrés Bolaños Penagos |
-| 6 | Sergio Avellaneda Piñeros |
+| 1 | Juan Esteban Otavo García |
+| 2 | Santiago Camilo Fonseca Prieto |
+
+> El proyecto continuó como un equipo de dos personas después de la primera entrega.
 
 ---
 
@@ -190,8 +190,8 @@ pip install -r requirements.txt
 
 | Recurso | URL |
 |---------|-----|
-| **Repositorio** | https://github.com/sergiosinlimites/apm |
-| **Sitio en vivo** | https://sergiosinlimites.github.io/apm/ |
+| **Repositorio** | https://github.com/santiagofonsecap/APM_Page |
+| **Sitio en vivo** | https://santiagofonsecap.github.io/APM_Page/ |
 
 ---
 
